@@ -1,0 +1,54 @@
+<div class="sidebar sidebar-collapse" id="sidebar">
+    <div class="sidebar__menu-group">
+        <ul class="sidebar_nav">
+            <% if(menuType==='admin' ) { %>
+                <li>
+                    <a href="<%- locals.base %>admin/dashboard/<%- locale %>"
+                        class="<%- name === 'admin-dashboard' ? 'active':'' %>">
+                        <span class="nav-icon uil uil-create-dashboard"></span>
+                        <span class="menu-text"><%- __('dashboard_page_title') %></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<%- locals.base %>admin/soft-skills/<%- locale %>"
+                        class="<%- name === 'softskills' ? 'active':'' %>">
+                        <span class="nav-icon uil uil-lightbulb-alt"></span>
+                        <span class="menu-text"><%- __('softskills-menu-title') %></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<%- locals.base %>admin/hard-skills/<%- locale %>"
+                        class="<%- name === 'hardskills' ? 'active':'' %>">
+                        <span class="nav-icon uil uil-lightbulb-alt"></span>
+                        <span class="menu-text">Hard SKills</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<%- locals.base %>admin/tools/<%- locale %>" class="<%- name === 'tools' ? 'active':'' %>">
+                        <span class="nav-icon uil uil-lightbulb-alt"></span>
+                        <span class="menu-text">Candidates</span>
+                    </a>
+                </li>
+                <% } %>
+
+                    <% if(menuType==='candidate' ) { %>
+                        <li>
+                            <a href="<%- locals.base %>candidate/dashboard/<%- locale %>"
+                                class="<%- name === 'candidate-dashboard' ? 'active':'' %>">
+                                <span class="nav-icon uil uil-create-dashboard"></span>
+                                <span class="menu-text"><%- __('dashboard_page_title') %></span>
+                            </a>
+                        </li>
+                        <% } %>
+                            <% if(menuType==='employer' ) { %>
+                                <li>
+                                    <a href="<%- locals.base %>employer/dashboard/<%- locale %>"
+                                        class="<%- name === 'employer-dashboard' ? 'active':'' %>">
+                                        <span class="nav-icon uil uil-create-dashboard"></span>
+                                        <span class="menu-text"><%- __('dashboard_page_title') %></span>
+                                    </a>
+                                </li>
+                                <% } %>
+        </ul>
+    </div>
+</div>

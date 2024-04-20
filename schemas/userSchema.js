@@ -1,17 +1,13 @@
 const mongoose = require("mongoose");
-const { isEmail } = require("validator");
-const validator = require("mongoose-unique-validator");
+const { isEmail, isMobilePhone } = require("validator");
+const mime = require('mime-types');
 
 const userSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "Name field is required !"],
-  },
   email: {
     type: String,
     validate: [isEmail, "Enter a valid email address !"],
     required: [true, "Email address is required !"],
-    unique: true,
+    unique: [true, "Email is already registered!"],
   },
   password: {
     type: String,
@@ -20,8 +16,7 @@ const userSchema = mongoose.Schema({
   userType: {
     type: String,
     enum: ["employer", "admin", "candidate"],
-    default: "admin",
-  },
+  }
 });
-userSchema.plugin(validator, { message: "Email address already exists !" });
+
 module.exports = userSchema;

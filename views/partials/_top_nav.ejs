@@ -7,7 +7,7 @@
             </a>
             <a href="#" class="sidebar-toggle">
                 <img class="svg" src="<%- locals.base %>img/svg/align-center-alt.svg" alt="img"></a>
-        </div>        
+        </div>
         <div class="top-menu">
             <div class="hexadash-top-menu position-relative">
                 <ul>
@@ -17,9 +17,9 @@
                         <ul class="subMenu">
                             <li class="">
                                 <a href="<%- locals.base %>admin/dashboard/<%- locale %>">Blank Page</a>
-                            </li>                            
+                            </li>
                         </ul>
-                    </li>                                       
+                    </li>
                 </ul>
             </div>
         </div>
@@ -33,7 +33,8 @@
                 </a>
                 <form action="/" class="search-form-topMenu">
                     <span class="search-icon uil uil-search"></span>
-                    <input class="form-control me-sm-2 box-shadow-none" type="search" placeholder="Search..." aria-label="Search">
+                    <input class="form-control me-sm-2 box-shadow-none" type="search" placeholder="Search..."
+                        aria-label="Search">
                 </form>
             </li>
             <!-- <li class="nav-message">
@@ -134,7 +135,8 @@
                         <img class="svg" src="<%- locals.base %>img/svg/alarm.svg" alt="img">
                     </a>
                     <div class="dropdown-wrapper">
-                        <h2 class="dropdown-wrapper__title">Notifications <span class="badge-circle badge-warning ms-1">4</span></h2>
+                        <h2 class="dropdown-wrapper__title">Notifications <span
+                                class="badge-circle badge-warning ms-1">4</span></h2>
                         <ul>
                             <li class="nav-notification__single nav-notification__single--unread d-flex flex-wrap">
                                 <div class="nav-notification__type nav-notification__type--primary">
@@ -142,7 +144,8 @@
                                 </div>
                                 <div class="nav-notification__details">
                                     <p>
-                                        <a href="" class="subject stretched-link text-truncate" style="max-width: 180px;">James</a>
+                                        <a href="" class="subject stretched-link text-truncate"
+                                            style="max-width: 180px;">James</a>
                                         <span>sent you a message</span>
                                     </p>
                                     <p>
@@ -156,7 +159,8 @@
                                 </div>
                                 <div class="nav-notification__details">
                                     <p>
-                                        <a href="" class="subject stretched-link text-truncate" style="max-width: 180px;">James</a>
+                                        <a href="" class="subject stretched-link text-truncate"
+                                            style="max-width: 180px;">James</a>
                                         <span>sent you a message</span>
                                     </p>
                                     <p>
@@ -170,7 +174,8 @@
                                 </div>
                                 <div class="nav-notification__details">
                                     <p>
-                                        <a href="" class="subject stretched-link text-truncate" style="max-width: 180px;">James</a>
+                                        <a href="" class="subject stretched-link text-truncate"
+                                            style="max-width: 180px;">James</a>
                                         <span>sent you a message</span>
                                     </p>
                                     <p>
@@ -184,7 +189,8 @@
                                 </div>
                                 <div class="nav-notification__details">
                                     <p>
-                                        <a href="" class="subject stretched-link text-truncate" style="max-width: 180px;">James</a>
+                                        <a href="" class="subject stretched-link text-truncate"
+                                            style="max-width: 180px;">James</a>
                                         <span>sent you a message</span>
                                     </p>
                                     <p>
@@ -198,7 +204,8 @@
                                 </div>
                                 <div class="nav-notification__details">
                                     <p>
-                                        <a href="" class="subject stretched-link text-truncate" style="max-width: 180px;">James</a>
+                                        <a href="" class="subject stretched-link text-truncate"
+                                            style="max-width: 180px;">James</a>
                                         <span>sent you a message</span>
                                     </p>
                                     <p>
@@ -211,35 +218,38 @@
                     </div>
                 </div>
             </li>
-            
+
             <li class="nav-flag-select">
                 <div class="dropdown-custom">
-                    <% switch (locale) {
-                        case 'en' : %>
-                            <a href="javascript:;" class="nav-item-toggle"><img src="<%- locals.base %>img/eng.png" alt="" class="rounded-circle"></a>
-                            <% break;                        
-                        case 'gr' : %>
-                            <a href="javascript:;" class="nav-item-toggle"><img src="<%- locals.base %>img/ger.png" alt="" class="rounded-circle"></a>
-                            <% break;                        
-                        case 'ar' : %>
-                            <a href="javascript:;" class="nav-item-toggle"><img src="<%- locals.base %>img/iraq.png" alt="" class="rounded-circle"></a>
-                            <% break;
-                        default : %>
-                            <a href="javascript:;" class="nav-item-toggle"><img src="<%- locals.base %>img/eng.png" alt="" class="rounded-circle"></a>
-                            <% break;
-                        
-                    } %>
-                    <div class="dropdown-wrapper dropdown-wrapper--small">
-                        <a href="<%- currentRoute + '/en' %>"><img src="<%- locals.base %>img/eng.png" alt=""> English</a>
-                        <a href="<%- currentRoute + '/gr' %>"><img src="<%- locals.base %>img/ger.png" alt=""> German</a>
-                        <a href="<%- currentRoute + '/ar' %>"><img src="<%- locals.base %>img/iraq.png" alt=""> Arabic</a>
-                    </div>
+                    <% switch (locale) { case 'en' : %>
+                        <a href="javascript:;" class="nav-item-toggle"><img src="<%- locals.base %>img/eng.png" alt=""
+                                class="rounded-circle"></a>
+                        <% break; case 'gr' : %>
+                            <a href="javascript:;" class="nav-item-toggle"><img src="<%- locals.base %>img/ger.png"
+                                    alt="" class="rounded-circle"></a>
+                            <% break; case 'ar' : %>
+                                <a href="javascript:;" class="nav-item-toggle"><img src="<%- locals.base %>img/iraq.png"
+                                        alt="" class="rounded-circle"></a>
+                                <% break; default : %>
+                                    <a href="javascript:;" class="nav-item-toggle"><img
+                                            src="<%- locals.base %>img/eng.png" alt="" class="rounded-circle"></a>
+                                    <% break; } %>
+                                        <div class="dropdown-wrapper dropdown-wrapper--small">
+                                            <a href="<%- currentRoute + '/en' %>"><img
+                                                    src="<%- locals.base %>img/eng.png" alt=""> English</a>
+                                            <a href="<%- currentRoute + '/gr' %>"><img
+                                                    src="<%- locals.base %>img/ger.png" alt=""> German</a>
+                                            <a href="<%- currentRoute + '/ar' %>"><img
+                                                    src="<%- locals.base %>img/iraq.png" alt=""> Arabic</a>
+                                        </div>
                 </div>
             </li>
             <li class="nav-author">
                 <div class="dropdown-custom">
-                    <a href="javascript:;" class="nav-item-toggle"><img src="<%- locals.base %>img/author-nav.jpg" alt="" class="rounded-circle">
-                        <span class="nav-item__title"><%- session.name %><i class="las la-angle-down nav-item__arrow"></i></span>
+                    <a href="javascript:;" class="nav-item-toggle"><img src="<%- locals.base %>img/author-nav.jpg"
+                            alt="" class="rounded-circle">
+                        <span class="nav-item__title"><%- session.name %><i
+                                    class="las la-angle-down nav-item__arrow"></i></span>
                     </a>
                     <div class="dropdown-wrapper">
                         <div class="nav-author__info">
@@ -257,29 +267,13 @@
                                     <a href="<%- locals.base + session.userType %>/profile/<%- locale %>">
                                         <i class="uil uil-user"></i> Profile</a>
                                 </li>
-                                <li>
-                                    <a href="">
-                                        <i class="uil uil-setting"></i> Settings</a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <i class="uil uil-key-skeleton"></i> Billing</a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <i class="uil uil-users-alt"></i> Activity</a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <i class="uil uil-bell"></i> Help</a>
-                                </li>
                             </ul>
                             <a href="" onclick="                                   
                                 event.preventDefault()
                                 document.getElementById('logout').submit()" class="nav-author__signout">
                                 <i class="uil uil-sign-out-alt"></i> Sign Out</a>
-                                <form style="display:none;" id="logout" action="<%- locals.base %>logout" method="POST">
-                                </form>
+                            <form style="display:none;" id="logout" action="<%- locals.base %>logout" method="POST">
+                            </form>
                         </div>
                     </div>
                 </div>

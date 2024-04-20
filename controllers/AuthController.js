@@ -107,7 +107,6 @@ const authenticate = async (request, response, next) => {
       };
       request.session.user = userInfo;
       request.session.save();
-      console.log(response.locals.base);
       response.redirect(
         `${response.locals.base + userInfo.userType}/dashboard/${response.getLocale()}`,
       );

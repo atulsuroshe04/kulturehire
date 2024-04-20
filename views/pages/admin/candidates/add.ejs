@@ -1,0 +1,222 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="contact-breadcrumb">
+
+                <div class="breadcrumb-main add-contact justify-content-sm-between ">
+                    <div class=" d-flex flex-wrap justify-content-center breadcrumb-main__wrapper">
+                        <div class="d-flex align-items-center add-contact__title justify-content-center me-sm-25">
+                            <h4 class="text-capitalize fw-500 breadcrumb-title">Add User</h4>
+                            <span class="sub-title ms-sm-25 ps-sm-25"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ends: contact-breadcrumb -->
+        </div>
+    </div>
+
+    <div class="card mb-50">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-10">
+                <div class="mt-40 mb-50">
+                    <div class="horizontal-form">
+                        <form class="was-validated"
+                            action="<%- locals.base %><%- session.userType%>/candidate/create/<%- locale %>"
+                            method="post" enctype="multipart/form-data">
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputNameIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Name</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="la-user lar color-gray"></span>
+                                        <input type="text"
+                                            class="form-control is-invalid  ih-medium ip-gray radius-xs b-light"
+                                            id="inputNameIcon" placeholder="" name="name" required
+                                            value="<%- input ? input.name : '' %>">
+                                    </div>
+                                    <% if (locals.errors && locals.errors.name) { %>
+                                        <span class="text-danger"><%- errors.name %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputEmailIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Email
+                                        Address</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="lar la-envelope color-gray"></span>
+                                        <input type="email" class="form-control  ih-medium ip-gray radius-xs b-light"
+                                            id="inputEmailIcon" name="email" placeholder="username@email.com" required
+                                            value="<%- input ? input.email : '' %>">
+                                    </div>
+                                    <% if (locals.errors && locals.errors.email) { %>
+                                        <span class="text-danger"><%- errors.email %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3">
+                                    <label for="inputPasswordIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Phone</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="las la-phone color-gray"></span>
+                                        <input type="text"
+                                            class="form-control is-invalid  ih-medium ip-gray radius-xs b-light"
+                                            id="inputPasswordIcon" name="phone" value="<%- input ? input.phone : '' %>"
+                                            required>
+                                    </div>
+                                    <% if (locals.errors && locals.errors.phone) { %>
+                                        <span class="text-danger"><%- errors.phone %></span>
+                                        <% } %>
+
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputNameIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Age</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="la-calendar lar color-gray"></span>
+                                        <input type="text"
+                                            class="form-control is-invalid ih-medium ip-gray radius-xs b-light"
+                                            id="inputNameIcon" placeholder="" name="age"
+                                            value="<%- input ? input.age : '' %>" required>
+
+                                    </div>
+                                    <% if (locals.errors && locals.errors.age) { %>
+                                        <span class="text-danger"><%- errors.age %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputNameIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Gender</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="radio-theme-default custom-radio ">
+                                        <input class="radio" type="radio" name="gender" <%- input &&
+                                            input.gender=='male' ? 'checked' :'' %> value="male" id="radio-hl1"
+                                        required>
+                                        <label for="radio-hl1">
+                                            <span class="radio-text">Male</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-theme-default custom-radio ">
+                                        <input class="radio" type="radio" name="gender" value="female" id="radio-hl2"
+                                            <%- input && input.gender=='female' ? 'checked' :'' %>
+                                        required>
+                                        <label for="radio-hl2">
+                                            <span class="radio-text">Female</span>
+                                        </label>
+                                    </div>
+                                    <% if (locals.errors && locals.errors.gender) { %>
+                                        <span class="text-danger"><%- errors.gender %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputNameIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Current
+                                        Location</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="las la-map-marker color-gray"></span>
+                                        <input type="text"
+                                            class="form-control is-invalid ih-medium ip-gray radius-xs b-light"
+                                            id="inputNameIcon" placeholder="" name="current_location"
+                                            value="<%- input ? input.current_location : '' %>" required>
+
+                                    </div>
+                                    <% if (locals.errors && locals.errors.current_location) { %>
+                                        <span class="text-danger"><%- errors.current_location %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputNameIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Job Title
+                                    </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="las la-map-marker color-gray"></span>
+                                        <input type="text"
+                                            class="form-control is-invalid ih-medium ip-gray radius-xs b-light"
+                                            id="inputNameIcon" placeholder="" name="job_title"
+                                            value="<%- input ? input.job_title : '' %>" required>
+
+                                    </div>
+                                    <% if (locals.errors && locals.errors.job_title) { %>
+                                        <span class="text-danger"><%- errors.job_title %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputNameIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Monthly Expected
+                                        Salary</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="la-hand-holding-usd la color-gray"></span>
+                                        <input type="text"
+                                            class="form-control is-invalid ih-medium ip-gray radius-xs b-light"
+                                            id="inputNameIcon" placeholder="" name="monthly_expected_salary"
+                                            value="<%- input ? input.monthly_expected_salary : '' %>" required>
+
+                                    </div>
+                                    <% if (locals.errors && locals.errors.current_location) { %>
+                                        <span class="text-danger"><%- errors.current_location %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputNameIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Resume</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="dm-tag-wrap">
+                                        <div class="dm-upload">
+                                            <div class="dm-upload__button">
+                                                <input type="file" name="resume"
+                                                    class="btn btn-lg is-invalid btn-outline-lighten btn-upload"
+                                                    required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% if (locals.errors && locals.errors.resume) { %>
+                                        <span class="text-danger"><%- errors.resume %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="layout-button mt-25">
+                                <button type="button"
+                                    class="btn btn-default btn-squared border-normal bg-normal px-20 ">cancel</button>
+                                <button type="submit"
+                                    class="btn btn-primary btn-default btn-squared px-30">save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

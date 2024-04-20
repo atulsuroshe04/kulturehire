@@ -7,6 +7,8 @@ const CandidatesController = require("../controllers/admin/CandidateController")
 const ToolsController = require("../controllers/admin/ToolsController");
 const authMiddleware = require("../middlewares/auth");
 const localeMiddleware = require("../middlewares/locale");
+const fileUploadMiddleware = require("../middlewares/fileUpload");
+
 
 router.get(
   "/dashboard/:language(en|gr|ar)",
@@ -77,5 +79,21 @@ router.get(
   [localeMiddleware.localized, authMiddleware.isAuthenticated],
   CandidatesController.candidatesList,
 );
+
+router.get("/candidate/create/:language(en|gr|ar)",
+  [localeMiddleware.localized, authMiddleware.isAuthenticated],
+  CandidatesController.addCandidate)
+
+router.post("/candidate/create/:language(en|gr|ar)",
+  [localeMiddleware.localized, authMiddleware.isAuthenticated, fileUploadMiddleware.uploadFile],
+  CandidatesController.storeCandidate)
+
+router.get("/candidate/edit/:id/:language(en|gr|ar)",
+  [localeMiddleware.localized, authMiddleware.isAuthenticated],
+  CandidatesController.editCandidate)
+
+router.post("/candidate/edit/:id/:language(en|gr|ar)",
+  [fileUploadMiddleware.uploadFile, localeMiddleware.localized, authMiddleware.isAuthenticated],
+  CandidatesController.updateCandidate)
 
 module.exports = router;

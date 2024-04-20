@@ -1,4 +1,3 @@
-
 <main class="main-content">
     <div class="admin" style="background-image: url('<%- locals.base %>img/admin-bg-light.png');">
         <div class="container-fluid">
@@ -6,13 +5,13 @@
                 <div class="col-xxl-3 col-xl-4 col-md-6 col-sm-8">
                     <div class="edit-profile">
                         <div class="edit-profile__logos">
-                            <img class="dark" src="<%- locals.base %>img/logo_dark.svg" alt="">
-                            <img class="light" src="<%- locals.base %>img/logo_white.svg" alt="">
+                            <img class="dark" src="<%- locals.base %>img/kh_logo.png" alt="">
+                            <img class="light" src="<%- locals.base %>img/kh_logo.png" alt="">
                         </div>
                         <div class="card border-0">
                             <div class="card-header">
                                 <div class="edit-profile__title">
-                                    <h6>Sign in HexaDash</h6>
+                                    <h6>Sign Up</h6>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -21,43 +20,53 @@
                                         <form action="<%- locals.base %>register" method="post">
                                             <div class="form-group mb-20">
                                                 <label for="name">Name</label>
-                                                <input type="text" class="form-control" id="name" name="name" value="<%if (locals.input && locals.input.name) {%><%- input.name %><%}%>" placeholder="Name">
+                                                <input type="text" class="form-control" id="name" name="name"
+                                                    value="<%if (locals.input && locals.input.name) {%><%- input.name %><%}%>"
+                                                    placeholder="Name">
                                                 <% if(locals.errors && locals.errors.name) {%>
                                                     <span class="text-danger"><%- errors.name %></span>
-                                                <% } %>
+                                                    <% } %>
                                             </div>
                                             <div class="form-group mb-20">
                                                 <label for="email">Email Address</label>
-                                                <input type="text" class="form-control" id="email" name="email" value="<%if (locals.input && locals.input.email) {%><%- input.email %><%}%>" placeholder="Email Address">
+                                                <input type="text" class="form-control" id="email" name="email"
+                                                    value="<%if (locals.input && locals.input.email) {%><%- input.email %><%}%>"
+                                                    placeholder="Email Address">
                                                 <% if(locals.errors && locals.errors.email) {%>
                                                     <span class="text-danger"><%- errors.email %></span>
-                                                <% } %>
+                                                    <% } %>
                                             </div>
                                             <div class="form-group mb-15">
                                                 <label for="password-field">Password</label>
                                                 <div class="position-relative">
-                                                    <input id="password-field" type="password" class="form-control" name="password" placeholder="Password">
-                                                    <div toggle="#password-field" class="uil uil-eye-slash text-lighten fs-15 field-icon toggle-password2">
+                                                    <input id="password-field" type="password" class="form-control"
+                                                        name="password" placeholder="Password">
+                                                    <div toggle="#password-field"
+                                                        class="uil uil-eye-slash text-lighten fs-15 field-icon toggle-password2">
                                                     </div>
-                                                  </div>
+                                                </div>
                                                 <% if(locals.errors && locals.errors.password) {%>
                                                     <span class="text-danger"><%- errors.password %></span>
-                                                <% } %>
+                                                    <% } %>
                                             </div>
                                             <div class="admin-condition">
                                                 <div class="checkbox-theme-default custom-checkbox ">
                                                     <input class="checkbox" type="checkbox" id="check-1">
                                                     <label for="check-1">
-                                                        <span class="checkbox-text">Creating an account means you’re okay
+                                                        <span class="checkbox-text">Creating an account means you’re
+                                                            okay
                                                             with our <a href="#" class="color-primary">Terms of
-                                                                Service</a> and <a href="#" class="color-primary">Privacy
+                                                                Service</a> and <a href="#"
+                                                                class="color-primary">Privacy
                                                                 Policy</a>
                                                             my preference</span>
                                                     </label>
                                                 </div>
                                             </div>
-                                            <div class="admin__button-group button-group d-flex pt-1 justify-content-md-start justify-content-center">
-                                                <button type="submit" class="btn btn-primary btn-default w-100 btn-squared text-capitalize lh-normal px-50 signIn-createBtn ">
+                                            <div
+                                                class="admin__button-group button-group d-flex pt-1 justify-content-md-start justify-content-center">
+                                                <button type="submit"
+                                                    class="btn btn-primary btn-default w-100 btn-squared text-capitalize lh-normal px-50 signIn-createBtn ">
                                                     Create Account
                                                 </button>
                                             </div>
@@ -65,7 +74,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="px-20">
+                            <!-- <div class="px-20">
                                 <p class="social-connector social-connector__admin text-center">
                                     <span>Or</span>
                                 </p>
@@ -93,7 +102,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="admin-topbar">
                                 <p class="mb-0">
                                     Don't have an account?

@@ -21,7 +21,6 @@ const BASE_URL = process.env.BASE_URL
 
 // requires all the routes
 const admin_routes = require('./routes/admin')
-const candidate_routes = require('./routes/candidate')
 const employer_routes = require('./routes/employer')
 const auth_routes = require('./routes/auth')
 
@@ -58,6 +57,7 @@ app.use(session({
    store: store
 }))
 app.use(bodyParser.urlencoded({ extended: false }))
+
 app.use(globalSession.globalSession)
 app.use(globalSession.errorMessage)
 app.locals.base = BASE_URL
@@ -73,7 +73,6 @@ app.use(localeMiddleware.currentRoute)
 
 // registering all the routes
 app.use(BASE_URL + 'admin', admin_routes)
-app.use(BASE_URL + 'candidate', candidate_routes)
 app.use(BASE_URL + 'employer', employer_routes)
 app.use(BASE_URL + '', auth_routes)
 app.use(localeMiddleware.activeLocale)

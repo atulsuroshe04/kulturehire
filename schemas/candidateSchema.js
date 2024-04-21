@@ -54,8 +54,10 @@ const candidateSchema = mongoose.Schema({
     type: String,
     required: [true, "Please select a resume file!"]
   },
-  resume_path: String
-});
+  resume_path: String,
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  updatedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+}, { timestamps: true });
 candidateSchema.plugin(validator, { message: "Email address already exists !" });
 
 module.exports = candidateSchema;

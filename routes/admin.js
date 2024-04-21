@@ -3,6 +3,7 @@ const router = express.Router();
 const DashboardController = require("../controllers/admin/DashboardController");
 const SoftSkillsController = require("../controllers/admin/SoftskillController");
 const HardSkillsController = require("../controllers/admin/HardskillController");
+const EmployerController = require("../controllers/admin/EmployerController");
 const CandidatesController = require("../controllers/admin/CandidateController");
 const ToolsController = require("../controllers/admin/ToolsController");
 const authMiddleware = require("../middlewares/auth");
@@ -96,4 +97,23 @@ router.post("/candidate/edit/:id/:language(en|gr|ar)",
   [fileUploadMiddleware.uploadFile, localeMiddleware.localized, authMiddleware.isAuthenticated],
   CandidatesController.updateCandidate)
 
+
+// soft skills route
+router.get(
+  "/employer/:language(en|gr|ar)",
+  [localeMiddleware.localized, authMiddleware.isAuthenticated],
+  EmployerController.employerList,
+);
+router.get(
+  "/employer/add/:language(en|gr|ar)",
+  [localeMiddleware.localized, authMiddleware.isAuthenticated],
+  EmployerController.loadAddEmployer,
+);
+router.get(
+  "/employer/edit/:id/:language(en|gr|ar)",
+  [localeMiddleware.localized, authMiddleware.isAuthenticated],
+  EmployerController.loadEditEmployer,
+);
+router.post("/employer/save/:language(en|gr|ar)", EmployerController.employerSave);
+router.post("/employer/update/:id/:language(en|gr|ar)", EmployerController.employerUpdate);
 module.exports = router;

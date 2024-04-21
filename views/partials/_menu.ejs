@@ -25,9 +25,16 @@
                 </li>
                 <li>
                     <a href="<%- locals.base %>admin/candidates/<%- locale %>"
-                        class="<%- name === 'tools' ? 'active':'' %>">
+                        class="<%- name === 'candidates' ? 'active':'' %>">
                         <span class="nav-icon uil uil-lightbulb-alt"></span>
                         <span class="menu-text">Candidates</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<%- locals.base %>admin/employer/<%- locale %>"
+                        class="<%- name === 'employers' ? 'active':'' %>">
+                        <span class="nav-icon uil uil-lightbulb-alt"></span>
+                        <span class="menu-text">Employers</span>
                     </a>
                 </li>
                 <% } %>

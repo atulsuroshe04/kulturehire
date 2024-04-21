@@ -1,0 +1,177 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="contact-breadcrumb">
+
+                <div class="breadcrumb-main add-contact justify-content-sm-between ">
+                    <div class=" d-flex flex-wrap justify-content-center breadcrumb-main__wrapper">
+                        <div class="d-flex align-items-center add-contact__title justify-content-center me-sm-25">
+                            <h4 class="text-capitalize fw-500 breadcrumb-title">Add User</h4>
+                            <span class="sub-title ms-sm-25 ps-sm-25"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ends: contact-breadcrumb -->
+        </div>
+    </div>
+
+    <div class="card mb-50">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-10">
+                <div class="mt-40 mb-50">
+                    <div class="horizontal-form">
+                        <form class="was-validated"
+                            action="<%- locals.base %><%- session.userType%>/employer/save/<%- locale %>" method="post">
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputNameIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Company
+                                        Name</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="la-user lar color-gray"></span>
+                                        <input type="text"
+                                            class="form-control is-invalid  ih-medium ip-gray radius-xs b-light"
+                                            id="inputNameIcon" placeholder="" name="company_name" required
+                                            value="<%- input ? input.company_name : '' %>">
+                                    </div>
+                                    <% if (locals.errors && locals.errors.company_name) { %>
+                                        <span class="text-danger"><%- errors.company_name %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputNameIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">CIN/GST
+                                        Number</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="la-user lar color-gray"></span>
+                                        <input type="text"
+                                            class="form-control is-invalid  ih-medium ip-gray radius-xs b-light"
+                                            id="inputNameIcon" placeholder="" name="gst_number" required
+                                            value="<%- input ? input.gst_number : '' %>">
+                                    </div>
+                                    <% if (locals.errors && locals.errors.gst_number) { %>
+                                        <span class="text-danger"><%- errors.gst_number %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputNameIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Current
+                                        Location</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="las la-map-marker color-gray"></span>
+                                        <input type="text"
+                                            class="form-control is-invalid ih-medium ip-gray radius-xs b-light"
+                                            id="inputNameIcon" placeholder="" name="location"
+                                            value="<%- input ? input.location : '' %>" required>
+
+                                    </div>
+                                    <% if (locals.errors && locals.errors.location) { %>
+                                        <span class="text-danger"><%- errors.location %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputNameIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Linked URL
+                                    </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="las la-map-marker color-gray"></span>
+                                        <input type="text"
+                                            class="form-control is-invalid ih-medium ip-gray radius-xs b-light"
+                                            id="inputNameIcon" placeholder="" name="linkedin_url"
+                                            value="<%- input ? input.linkedin_url : '' %>" required>
+
+                                    </div>
+                                    <% if (locals.errors && locals.errors.linkedin_url) { %>
+                                        <span class="text-danger"><%- errors.linkedin_url %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputEmailIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Official Email
+                                        Address</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="lar la-envelope color-gray"></span>
+                                        <input type="email" class="form-control  ih-medium ip-gray radius-xs b-light"
+                                            id="inputEmailIcon" name="official_email_address"
+                                            placeholder="username@email.com" required
+                                            value="<%- input ? input.official_email_address : '' %>">
+                                    </div>
+                                    <% if (locals.errors && locals.errors.official_email_address) { %>
+                                        <span class="text-danger"><%- errors.official_email_address %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3">
+                                    <label for="inputPasswordIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Official Contact
+                                        Number</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="las la-phone color-gray"></span>
+                                        <input type="text"
+                                            class="form-control is-invalid  ih-medium ip-gray radius-xs b-light"
+                                            id="inputPasswordIcon" name="official_contact_number"
+                                            value="<%- input ? input.official_contact_number : '' %>" required>
+                                    </div>
+                                    <% if (locals.errors && locals.errors.official_contact_number) { %>
+                                        <span class="text-danger"><%- errors.official_contact_number %></span>
+                                        <% } %>
+
+                                </div>
+                            </div>
+                            <div class="form-group row mb-25">
+                                <div class="col-sm-3 d-flex aling-items-center">
+                                    <label for="inputNameIcon"
+                                        class=" col-form-label color-dark fs-14 fw-500 align-center">Person Name</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="with-icon">
+                                        <span class="la-calendar lar color-gray"></span>
+                                        <input type="text"
+                                            class="form-control is-invalid ih-medium ip-gray radius-xs b-light"
+                                            id="inputNameIcon" placeholder="" name="person_name"
+                                            value="<%- input ? input.person_name : '' %>" required>
+
+                                    </div>
+                                    <% if (locals.errors && locals.errors.person_name) { %>
+                                        <span class="text-danger"><%- errors.person_name %></span>
+                                        <% } %>
+                                </div>
+                            </div>
+
+                            <div class="layout-button mt-25">
+                                <button type="button"
+                                    class="btn btn-default btn-squared border-normal bg-normal px-20 ">cancel</button>
+                                <button type="submit"
+                                    class="btn btn-primary btn-default btn-squared px-30">save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

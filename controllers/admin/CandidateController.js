@@ -19,7 +19,7 @@ const candidatesList = async (request, response, next) => {
   response.render("../views/pages/admin/candidates/list", {
     title: "Candidates List",
     menuType: "admin",
-    name: "candidates-list",
+    name: "candidates",
     candidates: candidates,
     successMessages: request.flash("success"),
     errorMessages: request.flash("error"),
@@ -41,7 +41,7 @@ const candidatesList = async (request, response, next) => {
 const addCandidate = (request, response, next) => {
   response.render("../views/pages/admin/candidates/add", {
     title: "Add Candidate",
-    name: "add-candidate",
+    name: "candidates",
     menuType: "admin",
     layout: "../views/layout/app.ejs",
     successMessages: request.flash("success"),
@@ -80,7 +80,7 @@ const storeCandidate = async (request, response, next) => {
 
     response.render('../views/pages/admin/candidates/add', {
       title: 'Create New Candidate',
-      name: 'add_candidate',
+      name: 'candidates',
       menuType: 'admin',
       errors: error.errors,
       input: []
@@ -95,7 +95,7 @@ const editCandidate = async (request, response, next) => {
     console.log(data)
     response.render('../views/pages/admin/candidates/edit', {
       title: 'Edit Candidate',
-      name: 'edit_candidate',
+      name: 'candidates',
       menuType: 'admin',
       data: data
     })
@@ -128,7 +128,7 @@ const updateCandidate = async (request, response, next) => {
 
     response.render('../views/pages/admin/candidates/add', {
       title: 'Create New Candidate',
-      name: 'add_candidate',
+      name: 'candidates',
       menuType: 'admin',
       errors: error.errors,
       input: []

@@ -52,7 +52,7 @@ app.use(session({
    saveUninitialized: true,
    cookie: {
       secure: false,
-      maxAge: 3600000
+      maxAge: 691200000
    },
    store: store
 }))
@@ -76,6 +76,11 @@ app.use(BASE_URL + 'admin', admin_routes)
 app.use(BASE_URL + 'employer', employer_routes)
 app.use(BASE_URL + '', auth_routes)
 app.use(localeMiddleware.activeLocale)
+app.get('/simulations/:simulationId/:fileName', (req, res) => {
+   const { simulationId, fileName } = req.params;
+   const filePath = path.join(__dirname, 'public', 'simulations', simulationId, fileName);
+   res.sendFile(filePath);
+});
 
 mongoose.connect('mongodb://' + DB_HOST + ':' + DB_PORT + '/' + DB_NAME + '').
    then(() => console.log("Mongodb connected successfully !")).

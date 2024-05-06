@@ -3,6 +3,9 @@ const { isEmail, isMobilePhone } = require("validator");
 const mime = require('mime-types');
 
 const userSchema = mongoose.Schema({
+  name: {
+    type: String
+  },
   email: {
     type: String,
     validate: [isEmail, "Enter a valid email address !"],

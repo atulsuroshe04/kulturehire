@@ -1,0 +1,161 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="breadcrumb-main">
+                <h4 class="text-capitalize breadcrumb-title">Milestone Data</h4>
+                <div class="breadcrumb-action justify-content-center flex-wrap">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="uil uil-estate"></i>Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Milestone data</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xxl-9 col-xl-8 col-sm-7">
+            <div class="mb-30">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel"
+                        aria-labelledby="v-pills-home-tab">
+                        <!-- Edit Profile -->
+
+                        <div class="card h-100 shadow-lg pb-md-50 pb-30 mb-md-50 mb-30 pt-30">
+
+                            <div class="card-body pt-0">
+                                <div class="form-group row mb-25">
+                                    <div class="col-sm-3 d-flex aling-items-center">
+                                        <label for="inputName"
+                                            class=" col-form-label color-dark fs-14 fw-500 align-center">Candidate
+                                            Name</label>
+                                    </div>
+                                    <div class="col-sm-9 pt-1">
+                                        <%- simulation.candidate_id.name%>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-25">
+                                    <div class="col-sm-3 d-flex aling-items-center">
+                                        <label for="inputName"
+                                            class=" col-form-label color-dark fs-14 fw-500 align-center">Program</label>
+                                    </div>
+                                    <div class="col-sm-9 pt-1">
+                                        <%- simulation.program_id.name%>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-25">
+                                    <div class="col-sm-3 d-flex aling-items-center">
+                                        <label for="inputName"
+                                            class=" col-form-label color-dark fs-14 fw-500 align-center">Primary
+                                            Skills</label>
+                                    </div>
+                                    <div class="col-sm-9 pt-1">
+                                        <% simulation.primary_skills.forEach(function(row, index) { %>
+                                            <%= row.name %>
+                                                <%= index < simulation.primary_skills.length - 1 ? ', ' : '' %>
+                                                    <% }) %>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-25">
+                                    <div class="col-sm-3 d-flex aling-items-center">
+                                        <label for="inputName"
+                                            class=" col-form-label color-dark fs-14 fw-500 align-center">Secondary
+                                            Skills</label>
+                                    </div>
+                                    <div class="col-sm-9 pt-1">
+                                        <% simulation.secondary_skills.forEach(function(row, index) { %>
+                                            <%= row.name %>
+                                                <%= index < simulation.secondary_skills.length - 1 ? ', ' : '' %>
+                                                    <% }) %>
+                                    </div>
+                                </div>
+                                <div class="application-faqs">
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                        <!-- panel 1 -->
+                                        <% for (let i=1; i <=20; i++) { %>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading<%-i%>">
+                                                    <h4 class="panel-title">
+                                                        <a data-bs-toggle="collapse" data-parent="#accordion"
+                                                            href="#collapse<%-i%>" aria-expanded="true">
+                                                            Miilestone <%- i %> details
+                                                        </a>
+                                                    </h4>
+
+                                                </div>
+                                                <div id="collapse<%-i%>" class="panel-collapse collapse in"
+                                                    role="tabpanel" aria-labelledby="heading<%-i%>">
+                                                    <div class="panel-body">
+                                                        <div class="form-group row mb-25">
+                                                            <div class="col-sm-3 d-flex aling-items-center">
+                                                                <label for="inputName"
+                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">Milestone
+                                                                    <%- i %> Expectation</label>
+                                                            </div>
+                                                            <div class="col-sm-9 pt-1">
+                                                                <%- simulation["milestone" + parseInt(i)
+                                                                    + "_expectation" ] %>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row mb-25">
+                                                            <div class="col-sm-3 d-flex aling-items-center">
+                                                                <label for="inputName"
+                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">Milestone
+                                                                    <%- i %> Skills</label>
+                                                            </div>
+                                                            <div class="col-sm-9 pt-1">
+                                                                <%- simulation["milestone" + parseInt(i) + "_skill" ] %>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row mb-25">
+                                                            <div class="col-sm-3 d-flex aling-items-center">
+                                                                <label for="inputName"
+                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">Milestone
+                                                                    <%- i %> Rating</label>
+                                                            </div>
+                                                            <div class="col-sm-9 pt-1">
+                                                                <%- simulation["milestone" + parseInt(i)
+                                                                    + "_skill_rating" ] %>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row mb-25">
+                                                            <div class="col-sm-3 d-flex aling-items-center">
+                                                                <label for="inputName"
+                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">Milestone
+                                                                    <%- i %> Submisstion</label>
+                                                            </div>
+                                                            <div class="col-sm-9 pt-1">
+                                                                <% if(simulation["milestone" + parseInt(i)
+                                                                    + "_submission_type" ]==='file' ){ %>
+                                                                    <%- "<a download href='/simulations/"
+                                                                        +simulation.candidate_id._id+"/"+simulation['milestone'
+                                                                        + parseInt(i) + '_submission' ]
+                                                                        + "'>View Attachment</a>" %>
+
+                                                                        <% }else{ %>
+                                                                            <%- simulation["milestone" + parseInt(i)
+                                                                                + "_submission" ] %>
+                                                                                <% } %>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <%}%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Edit Profile End -->
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- ends: col -->
+    </div>
+</div>

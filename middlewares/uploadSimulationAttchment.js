@@ -20,7 +20,8 @@ const fs = require('fs');
  */
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        const directory = 'public/resumes';
+        const candidate = req.body.candidate_id;
+        const directory = 'public/simulations/' + candidate;
         // Create the directory if it doesn't exist
         if (!fs.existsSync(directory)) {
             fs.mkdirSync(directory, { recursive: true });
@@ -63,11 +64,27 @@ const upload = multer({
 /**
  * ${1:Description placeholder}
  *
- * @type {*}
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
  */
-const uploadFile = upload.single('resume');
+const uploadFiles = (req, res, next) => {
+    const step = req.query.step || 1;
+    upload.fields([
+        { name: ['milestone' + step + '_file'], maxCount: 1 },
+    ])(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+            throw new Error(err.message);
+        } else if (err) {
+            throw new Error(err.message);
+        }
+        // Everything went fine.
+        next();
+    });
+};
+
 
 
 module.exports = {
-    uploadFile
+    uploadFiles
 }

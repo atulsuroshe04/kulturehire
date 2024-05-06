@@ -1,0 +1,255 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="shop-breadcrumb">
+                <div class="breadcrumb-main">
+                    <h4 class="text-capitalize breadcrumb-title">Add Simulation</h4>
+                    <div class="breadcrumb-action justify-content-center flex-wrap">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#"><i class="las la-home"></i>Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Wizard 5</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class=" checkout wizard10 global-shadow mb-30 bg-white radius-xl w-100">
+        <% if (errorMessages.length> 0) { %>
+            <div class="alert-icon-big alert alert-success " role="alert">
+                <div class="alert-icon">
+                    <img src="<%- locals.base %>img/svg/layers.svg" alt="layers" class="svg">
+                </div>
+                <div class="alert-content">
+                    <% errorMessages.forEach(function(message) { %>
+                        <p>
+                            <%= message %>
+                        </p>
+                        <% }) %>
+                </div>
+            </div>
+            <% } %>
+                <% if (successMessages.length> 0) { %>
+                    <div class="alert-icon-big alert alert-success " role="alert">
+                        <div class="alert-icon">
+                            <img src="<%- locals.base %>img/svg/layers.svg" alt="layers" class="svg">
+                        </div>
+                        <div class="alert-content">
+                            <% successMessages.forEach(function(message) { %>
+                                <p>
+                                    <%= message %>
+                                </p>
+                                <% }) %>
+                        </div>
+                    </div>
+                    <% } %>
+                        <form enctype="multipart/form-data" method="POST"
+                            action="<%- locals.base %>admin/simulations/save/<%- locale %>?step=<%- step %>">
+                            <input type="hidden" name="simulation_id" value="<%- simulation_id %>">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-12">
+                                    <div class="card card-Vertical card-default card-md mb-4">
+                                        <div class="card-body py-md-30">
+                                            <div class="row justify-content-center">
+                                                <div class="col-md-5 mb-25">
+                                                    <label for="exampleFormControlSelect2"
+                                                        class="il-gray fs-14 fw-500 align-center mb-10">Candidate</label>
+                                                    <select name="candidate_id" id="select-tag1" class="form-control">
+                                                        <% const candidate=existing_simulation[0] || { candidate_id:
+                                                            null }; %>
+                                                            <% candidates.forEach(function(row) { %>
+                                                                <% const selected=candidate.candidate_id &&
+                                                                    candidate.candidate_id.toString()===row._id.toString()
+                                                                    ? 'selected' : '' ; %>
+                                                                    <option value="<%- row._id %>" <%=selected %>><%-
+                                                                            row.name %></option>
+                                                                    <% }) %>
+                                                    </select>
+                                                    <% if (locals.errors && locals.errors.candidate_id) { %>
+                                                        <span class="text-danger"><%- errors.candidate_id %></span>
+                                                        <% } %>
+                                                </div>
+                                                <div class="col-md-5 mb-25">
+                                                    <label for="exampleFormControlSelect2"
+                                                        class="il-gray fs-14 fw-500 align-center mb-10">Program</label>
+                                                    <select name="program_id" id="select-tag2" class="form-control">
+                                                        <% const program=existing_simulation[0] || { program_id: null };
+                                                            %>
+                                                            <% programs.forEach(function(row) { %>
+                                                                <% const selected=program.program_id &&
+                                                                    program.program_id.toString()===row._id.toString()
+                                                                    ? 'selected' : '' ; %>
+                                                                    <option value="<%- row._id %>" <%=selected %>><%-
+                                                                            row.name %></option>
+                                                                    <% }) %>
+                                                    </select>
+                                                    <% if (locals.errors && locals.errors.program_id) { %>
+                                                        <span class="text-danger"><%- errors.program_id %></span>
+                                                        <% } %>
+                                                </div>
+                                                <div class="col-md-5 mb-25">
+                                                    <label for="exampleFormControlSelect2"
+                                                        class="il-gray fs-14 fw-500 align-center mb-10">Primary
+                                                        Skills</label>
+                                                    <select name="primary_skills[]" id="select-tag3"
+                                                        class="form-control" multiple="multiple"
+                                                        placeholder="Select 3 primary skills">
+                                                        <% const pskills=existing_simulation[0] || { primary_skills: []
+                                                            }; %>
+                                                            <% skills.forEach(function(row) { %>
+                                                                <% const selected=pskills.primary_skills.some(skill=>
+                                                                    skill._id.toString() === row._id.toString()) ?
+                                                                    'selected' : ''; %>
+                                                                    <option value="<%- row._id %>" <%=selected %>><%-
+                                                                            row.name %></option>
+                                                                    <% }) %>
+                                                    </select>
+                                                    <% if (locals.errors && locals.errors.primary_skills) { %>
+                                                        <span class="text-danger"><%- errors.primary_skills %></span>
+                                                        <% } %>
+                                                </div>
+                                                <div class="col-md-5 mb-25">
+                                                    <label for="exampleFormControlSelect2"
+                                                        class="il-gray fs-14 fw-500 align-center mb-10">Secondary
+                                                        Skills</label>
+                                                    <select name="secondary_skills[]" id="select-tag4"
+                                                        class="form-control" multiple="multiple">
+                                                        <% const hskills=existing_simulation[0] || { secondary_skills:
+                                                            [] }; %>
+                                                            <% skills.forEach(function(row) { %>
+                                                                <% const selected=hskills.secondary_skills.some(skill=>
+                                                                    skill._id.toString() === row._id.toString()) ?
+                                                                    'selected' : ''; %>
+                                                                    <option value="<%- row._id %>" <%=selected %>><%-
+                                                                            row.name %></option>
+                                                                    <% }) %>
+                                                    </select>
+                                                    <% if (locals.errors && locals.errors.secondary_skills) { %>
+                                                        <span class="text-danger"><%- errors.secondary_skills %></span>
+                                                        <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ends: .card -->
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-4">
+                                            <div
+                                                class="checkout-progress-indicator border-0 p-0 radius-md mt-lg-30 p-xl-20 py-30 ps-30 pe-lg-0 pe-30">
+
+                                                <div class="checkout-progress3">
+                                                    <% for (let i=1; i <=20; i++) { %>
+                                                        <div class="step <% if(step == i){ %>current bg-lighter <% } %> "
+                                                            id="<%- i %>">
+                                                            <span>Milestone <%- i %></span>
+                                                            <span>Milestone details</span>
+                                                        </div>
+                                                        <% } %>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <div class="checkout-shipping-form pt-lg-50">
+                                                <div class="card p-0 radius-md border-0">
+                                                    <div class="card-body p-0">
+                                                        <div class="edit-profile__body">
+
+                                                            <div class="form-group">
+                                                                <label for="name31">Milestone <%- step %>
+                                                                        Expectation</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="milestone<%- step %>_expectation"
+                                                                    placeholder="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="name62">Mileston <%- step %> Skills</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="milestone<%- step %>_skill" placeholder="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="phoneNumber">mileston <%- step %> skills
+                                                                        rating</label>
+                                                                <input type="tel" class="form-control"
+                                                                    name="milestone<%- step %>_skill_rating"
+                                                                    placeholder="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="phoneNumber">mileston <%- step %> submission
+                                                                        type</label>
+                                                                <div class="radio-horizontal-list d-flex">
+
+
+                                                                    <div class="radio-theme-default custom-radio ">
+                                                                        <input class="radio" type="radio"
+                                                                            name="milestone<%- step %>_submission_type"
+                                                                            value="file" id="radio-hl1"
+                                                                            onclick="toggleInput('file')">
+                                                                        <label for="radio-hl1">
+                                                                            <span class="radio-text">File based</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="radio-theme-default custom-radio ">
+                                                                        <input class="radio" type="radio"
+                                                                            name="milestone<%- step %>_submission_type"
+                                                                            value="text" id="radio-hl2"
+                                                                            onclick="toggleInput('text')">
+                                                                        <label for="radio-hl2">
+                                                                            <span class="radio-text">Text</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div id="fileInput" style="display:none;">
+                                                                    <input type="file" name="milestone<%- step %>_file"
+                                                                        class="btn btn-lg is-invalid btn-outline-lighten btn-upload" />
+                                                                </div>
+
+                                                                <div id="textInput" style="display:none;">
+                                                                    <input type="tel" class="form-control"
+                                                                        name="milestone<%- step %>_text"
+                                                                        placeholder="+440">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="border-top mt-30">
+                                                                <div
+                                                                    class="button-group d-flex pt-40 mb-20 justify-content-between flex-wrap">
+                                                                    <a href="http://45.33.34.15:8002/en/wizard/five?step=1"
+                                                                        class="btn btn-light btn-default btn-squared fw-400 text-capitalize m-1"><i
+                                                                            class="las la-arrow-left me-10"></i>Previous</a>
+                                                                    <button type="submit"
+                                                                        class="btn text-white btn-primary btn-default btn-squared text-capitalize m-1">Save
+                                                                        &amp; Next<i
+                                                                            class="ms-10 me-0 las la-arrow-right"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- ends: card -->
+                                            </div>
+                                        </div><!-- ends: col -->
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+    </div>
+</div>
+<script>
+    function toggleInput(type) {
+        if (type === 'file') {
+            document.getElementById('fileInput').style.display = 'block';
+            document.getElementById('textInput').style.display = 'none';
+        } else if (type === 'text') {
+            document.getElementById('fileInput').style.display = 'none';
+            document.getElementById('textInput').style.display = 'block';
+        }
+    }
+</script>

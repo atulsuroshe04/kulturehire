@@ -1,5 +1,20 @@
+/**
+ * ${1:Description placeholder}
+ *
+ * @type {*}
+ */
 const mongoose = require("mongoose");
+/**
+ * ${1:Description placeholder}
+ *
+ * @type {*}
+ */
 const toolsSchema = require("../../schemas/toolsSchema");
+/**
+ * ${1:Description placeholder}
+ *
+ * @type {*}
+ */
 const Tool = new mongoose.model("Tools", toolsSchema);
 
 

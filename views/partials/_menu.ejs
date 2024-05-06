@@ -10,17 +10,17 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<%- locals.base %>admin/soft-skills/<%- locale %>"
+                    <a href="<%- locals.base %>admin/skills/<%- locale %>"
                         class="<%- name === 'softskills' ? 'active':'' %>">
-                        <span class="nav-icon uil uil-lightbulb-alt"></span>
+                        <span class="nav-icon uil uil-keyhole-circle"></span>
                         <span class="menu-text"><%- __('softskills-menu-title') %></span>
                     </a>
                 </li>
                 <li>
-                    <a href="<%- locals.base %>admin/hard-skills/<%- locale %>"
-                        class="<%- name === 'hardskills' ? 'active':'' %>">
+                    <a href="<%- locals.base %>admin/programs/<%- locale %>"
+                        class="<%- name === 'programs' ? 'active':'' %>">
                         <span class="nav-icon uil uil-lightbulb-alt"></span>
-                        <span class="menu-text">Hard SKills</span>
+                        <span class="menu-text">Programs</span>
                     </a>
                 </li>
                 <li>
@@ -35,6 +35,13 @@
                         class="<%- name === 'employers' ? 'active':'' %>">
                         <span class="nav-icon uil uil-lightbulb-alt"></span>
                         <span class="menu-text">Employers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<%- locals.base %>admin/simulations/<%- locale %>"
+                        class="<%- name === 'employers' ? 'active':'' %>">
+                        <span class="nav-icon uil uil-book-open"></span>
+                        <span class="menu-text">Simulations</span>
                     </a>
                 </li>
                 <% } %>

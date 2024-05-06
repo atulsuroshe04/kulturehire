@@ -1,0 +1,130 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 mb-30">
+            <div class="card mt-30">
+                <div class="card-body">
+                    <div class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table">
+                        <div class="table-responsive">
+                            <% if (successMessages.length> 0) { %>
+                                <div class="alert-icon-big alert alert-success " role="alert">
+                                    <div class="alert-icon">
+                                        <img src="<%- locals.base %>img/svg/layers.svg" alt="layers" class="svg">
+                                    </div>
+                                    <div class="alert-content">
+                                        <% successMessages.forEach(function(message) { %>
+                                            <p>
+                                                <%= message %>
+                                            </p>
+                                            <% }) %>
+                                    </div>
+                                </div>
+                                <% } %>
+                                    <div class="adv-table-table__header">
+                                        <h4>Simulations</h4>
+                                        <a href="<%- locals.base %>admin/simulations/add/<%- locale %>"
+                                            class="btn px-15 btn-primary">
+                                            <i class="las la-plus fs-16"></i>Add New Simulation</a>
+                                    </div>
+
+                                    <div id="filter-form-container"></div>
+                                    <table class="table mb-0 table-borderless adv-table" data-sorting="false"
+                                        data-ordering="false" data-filter-container="#filter-form-container"
+                                        data-paging-current="1" data-paging-position="left" data-paging-size="10">
+                                        <thead>
+                                            <tr class="userDatatable-header">
+                                                <th>
+                                                    <span class="userDatatable-title">sr no</span>
+                                                </th>
+                                                <th>
+                                                    <span class="userDatatable-title">candidate</span>
+                                                </th>
+                                                <th>
+                                                    <span class="userDatatable-title">primary skills</span>
+                                                </th>
+                                                <th>
+                                                    <span class="userDatatable-title">secondary skills</span>
+                                                </th>
+                                                <th data-type="html" data-name='status'>
+                                                    <span class="userDatatable-title">status</span>
+                                                </th>
+                                                <th>
+                                                    <span class="userDatatable-title float-end">action</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if (data.length> 0) {
+                                                let sr = 1;
+                                                %>
+                                                <% data.forEach(function(row) { %>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="userDatatable-content"><%- sr++ %></div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="userDatatable-inline-title">
+                                                                    <a href="#" class="text-dark fw-500">
+                                                                        <h6>
+                                                                            <%= row.candidate_id.name %>
+                                                                        </h6>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="userDatatable-inline-title">
+                                                                    <a href="#" class="text-dark fw-500">
+                                                                        <h6>
+                                                                            <%= row.primary_skills.map(skill=>
+                                                                                skill.name).join(','); %>
+                                                                        </h6>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="userDatatable-inline-title">
+                                                                    <a href="#" class="text-dark fw-500">
+                                                                        <h6>
+                                                                            <%= row.secondary_skills.map(secskill=>
+                                                                                secskill.name).join(','); %>
+                                                                        </h6>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="userDatatable-content d-inline-block">
+                                                                <span
+                                                                    class=" <% if (row.status == 'active'){ %> bg-opacity-success color-success <% } else { %> bg-opacity-danger color-danger <% } %> rounded-pill userDatatable-content-status active">
+                                                                    <%= row.status %>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
+
+                                                                <li>
+                                                                    <a href="<%- locals.base %>admin/simulations/view/<%- row.id %>/<%- locale %>"
+                                                                        class="edit">
+                                                                        <i class="uil uil-eye"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <% }) %>
+                                                        <% } %>
+                                        </tbody>
+                                    </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

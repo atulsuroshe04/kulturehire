@@ -1,6 +1,26 @@
+/**
+ * ${1:Description placeholder}
+ *
+ * @type {*}
+ */
 const mongoose = require("mongoose");
+/**
+ * ${1:Description placeholder}
+ *
+ * @type {*}
+ */
 const candidateSchema = require("../../schemas/candidateSchema");
+/**
+ * ${1:Description placeholder}
+ *
+ * @type {*}
+ */
 const Candidate = new mongoose.model("Candidate", candidateSchema);
+/**
+ * ${1:Description placeholder}
+ *
+ * @type {*}
+ */
 const bcrypt = require("bcrypt");
 /**
  * Show candidate list 
@@ -50,6 +70,15 @@ const addCandidate = (request, response, next) => {
   });
 };
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @async
+ * @param {*} request
+ * @param {*} response
+ * @param {*} next
+ * @returns {*}
+ */
 const storeCandidate = async (request, response, next) => {
   let pass = Math.floor(10000000 + Math.random() * 90000000).toString().substring(0, 8);
 
@@ -89,6 +118,15 @@ const storeCandidate = async (request, response, next) => {
 };
 
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @async
+ * @param {*} request
+ * @param {*} response
+ * @param {*} next
+ * @returns {*}
+ */
 const editCandidate = async (request, response, next) => {
   const { id } = request.params;
   await Candidate.findById({ _id: id }).then((data) => {
@@ -102,6 +140,15 @@ const editCandidate = async (request, response, next) => {
   }).catch(error => console.log(error))
 }
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @async
+ * @param {*} request
+ * @param {*} response
+ * @param {*} next
+ * @returns {*}
+ */
 const updateCandidate = async (request, response, next) => {
   const { id } = request.params;
 

@@ -12,11 +12,11 @@ const { I18n } = require('i18n')
 const storage = require('node-sessionstorage')
 const flash = require('express-flash');
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 const mongoose = require('mongoose')
-const DB_HOST = process.env.DATABASE_HOST
+const DB_HOST = encodeURIComponent(process.env.DATABASE_HOST)
 const DB_PORT = process.env.DATABASE_PORT
-const DB_NAME = process.env.DATABASE_NAME
+const DB_NAME = encodeURIComponent(process.env.DATABASE_NAME)
 const BASE_URL = process.env.BASE_URL
 
 // requires all the routes

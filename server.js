@@ -81,6 +81,11 @@ app.get('/simulations/:simulationId/:fileName', (req, res) => {
    const filePath = path.join(__dirname, 'public', 'simulations', simulationId, fileName);
    res.sendFile(filePath);
 });
+app.get('/resumes/:fileName', (req, res) => {
+   const { fileName } = req.params;
+   const filePath = path.join(__dirname, 'public', 'resumes', fileName);
+   res.sendFile(filePath);
+});
 mongoose.set('strictQuery', false);
 mongoose.connect('mongodb://' + DB_HOST + ':' + DB_PORT + '/' + DB_NAME + '').
    then(() => console.log("Mongodb connected successfully !")).

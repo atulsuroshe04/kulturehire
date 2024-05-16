@@ -28,7 +28,7 @@ const isAuthenticated = (request, response, next) => {
 const isGuest = (request, response, next) => {
   if (request.session.user) {
     return response.redirect(
-      response.locals.base + "dashboard/" + response.getLocale(),
+      `${response.locals.base}${response.locals.session.userType}/dashboard/${response.getLocale()}`,
     );
   }
   next();

@@ -11,7 +11,6 @@ const multer = require('multer');
  */
 const fs = require('fs');
 
-
 // Define multer storage configuration
 /**
  * ${1:Description placeholder}
@@ -19,18 +18,18 @@ const fs = require('fs');
  * @type {*}
  */
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        const candidate = req.body.candidate_id;
-        const directory = 'public/simulations/' + candidate;
-        // Create the directory if it doesn't exist
-        if (!fs.existsSync(directory)) {
-            fs.mkdirSync(directory, { recursive: true });
-        }
-        cb(null, directory);
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now());
+  destination(req, file, cb) {
+    const candidate = req.body.candidate_id;
+    const directory = `public/simulations/${candidate}`;
+    // Create the directory if it doesn't exist
+    if (!fs.existsSync(directory)) {
+      fs.mkdirSync(directory, { recursive: true });
     }
+    cb(null, directory);
+  },
+  filename(req, file, cb) {
+    cb(null, `${file.fieldname}-${Date.now()}`);
+  },
 });
 
 // Define multer file filter
@@ -44,10 +43,7 @@ const storage = multer.diskStorage({
  * @returns {*}
  */
 const fileFilter = function (req, file, cb) {
-    if (!file.originalname.match(/\.(pdf|doc|docx)$/)) {
-        return cb(new Error('Only document files are allowed'));
-    }
-    cb(null, true);
+  cb(null, true);
 };
 
 // Create multer instance with storage and fileFilter configuration
@@ -57,8 +53,8 @@ const fileFilter = function (req, file, cb) {
  * @type {*}
  */
 const upload = multer({
-    storage: storage,
-    fileFilter: fileFilter
+  storage,
+  fileFilter,
 });
 // Middleware for handling file upload
 /**
@@ -69,22 +65,22 @@ const upload = multer({
  * @param {*} next
  */
 const uploadFiles = (req, res, next) => {
-    const step = req.query.step || 1;
-    upload.fields([
-        { name: ['milestone' + step + '_file'], maxCount: 1 },
-    ])(req, res, function (err) {
-        if (err instanceof multer.MulterError) {
-            throw new Error(err.message);
-        } else if (err) {
-            throw new Error(err.message);
-        }
-        // Everything went fine.
-        next();
-    });
+  const step = req.query.step || 1;
+  upload.fields([{ name: [`milestone${step}_file`], maxCount: 1 }])(
+    req,
+    res,
+    (err) => {
+      if (err instanceof multer.MulterError) {
+        throw new Error(err.message);
+      } else if (err) {
+        throw new Error(err.message);
+      }
+      // Everything went fine.
+      next();
+    },
+  );
 };
 
-
-
 module.exports = {
-    uploadFiles
-}
+  uploadFiles,
+};

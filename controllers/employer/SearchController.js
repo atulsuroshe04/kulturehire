@@ -23,7 +23,9 @@ const searchCandidate = async (request, response, next) => {
         "primary_skills",
         "secondary_skills",
     ]);
-    const skills = await Skill.find({ status: "active" });
+    const technical_skills = await Skill.find({ status: "active", type: 'technicalskill' });
+    const business_skills = await Skill.find({ status: "active", type: 'businessskill' });
+    const soft_skills = await Skill.find({ status: "active", type: 'softskill' });
     const programs = await Program.find({ status: "active" });
     response.render("../views/pages/employer/search-candidates", {
         title: "Search Candidates",
@@ -31,7 +33,9 @@ const searchCandidate = async (request, response, next) => {
         menuType: "employer",
         name: "search-candidates",
         simulations,
-        skills,
+        technical_skills,
+        business_skills,
+        soft_skills,
         programs
     });
 };

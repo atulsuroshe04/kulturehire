@@ -2,17 +2,17 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="shop-breadcrumb">
-                <div class="breadcrumb-main">
+                <!-- <div class="breadcrumb-main">
                     <h4 class="text-capitalize breadcrumb-title"></h4>
                     <div class="breadcrumb-action justify-content-center flex-wrap">
                         <nav aria-label="breadcrumb">
-                            <!-- <ol class="breadcrumb">
+                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#"><i class="las la-home"></i>App</a></li>
                                 <li class="breadcrumb-item active" aria-current="page"><%- __('job-search-list') %></li>
-                            </ol> -->
+                            </ol> 
                         </nav>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="col-lg-12 mb-xl-50 mb-30">
@@ -39,54 +39,7 @@
                     <div class="category_sidebar">
                         <form id="searchForm" method="POST">
                             <aside class="product-sidebar-widget mb-30">
-                                <div class="widget_title nocollapse">
-                                    <!-- <h6>Location</h6> -->
-                                </div>
-                                <div class="card border-0 shadow-none ">
-                                    <div class="location-search">
-                                        <!-- <img src="<%- locals.base %>img/svg/map-pin.svg" alt="map-pin" class="svg"> -->
-                                        <input class="form-control border-grey box-shadow-none" name="location"
-                                            type="search" placeholder="Location" aria-label="Search">
-                                    </div>
-                                </div>
-                            </aside>
-
-                            <aside class="product-sidebar-widget mb-30">
-                                <% if (skills.length> 0) {
-                                    let sr = 1;
-                                    %>
-
-                                    <div class="widget_title" data-bs-toggle="collapse"
-                                        data-bs-target="#multiCollapseExample2" role="button" aria-expanded="true">
-                                        <h6>Primary Skills</h6>
-                                    </div>
-                                    <div class="card border-0 shadow-none multi-collapse mt-10 collapse show"
-                                        id="multiCollapseExample2">
-                                        <div class="product-brands limit-list-item">
-                                            <ul>
-                                                <% skills.forEach(function(skill) { %>
-                                                    <li>
-                                                        <div class="checkbox-theme-default custom-checkbox ">
-                                                            <input class="checkbox" name="skills"
-                                                                value="<%- skill._id%>" type="checkbox"
-                                                                id="check-<%- sr %>">
-                                                            <label for="check-<%- sr %>">
-                                                                <span class="checkbox-text">
-                                                                    <%- skill.name%>
-                                                                </span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
-                                                    <% sr++%>
-                                                        <% }) %>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <% } %>
-                            </aside>
-                            <aside class="product-sidebar-widget mb-30">
-                                <% if (skills.length> 0) {
+                                <% if (programs.length> 0) {
                                     let srs = 1;
                                     %>
 
@@ -118,6 +71,122 @@
                                     </div>
                                     <% } %>
                             </aside>
+                            <aside class="product-sidebar-widget mb-30">
+                                <div class="widget_title nocollapse">
+                                    <h6>Location</h6>
+                                </div>
+                                <div class="card border-0 shadow-none ">
+                                    <div class="location-search">
+                                        <!-- <img src="<%- locals.base %>img/svg/map-pin.svg" alt="map-pin" class="svg"> -->
+                                        <input class="form-control border-grey box-shadow-none" name="location"
+                                            type="search" placeholder="Location" aria-label="Search">
+                                    </div>
+                                </div>
+                            </aside>
+
+                            <aside class="product-sidebar-widget mb-30">
+                                <% if (technical_skills.length> 0) {
+                                    let sr = 1;
+                                    %>
+
+                                    <div class="widget_title" data-bs-toggle="collapse"
+                                        data-bs-target="#multiCollapseExample2" role="button" aria-expanded="true">
+                                        <h6>Technical Skills</h6>
+                                    </div>
+                                    <div class="card border-0 shadow-none multi-collapse mt-10 collapse show"
+                                        id="multiCollapseExample2">
+                                        <div class="product-brands limit-list-item">
+                                            <ul>
+                                                <% technical_skills.forEach(function(skill) { %>
+                                                    <li>
+                                                        <div class="checkbox-theme-default custom-checkbox ">
+                                                            <input class="checkbox" name="skills"
+                                                                value="<%- skill._id%>" type="checkbox"
+                                                                id="check-<%- sr %>">
+                                                            <label for="check-<%- sr %>">
+                                                                <span class="checkbox-text">
+                                                                    <%- skill.name%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <% sr++%>
+                                                        <% }) %>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </aside>
+                            <aside class="product-sidebar-widget mb-30">
+                                <% if (business_skills.length> 0) {
+                                    let sr = 1;
+                                    %>
+
+                                    <div class="widget_title" data-bs-toggle="collapse"
+                                        data-bs-target="#multiCollapseExample2" role="button" aria-expanded="true">
+                                        <h6>Business Skills</h6>
+                                    </div>
+                                    <div class="card border-0 shadow-none multi-collapse mt-10 collapse show"
+                                        id="multiCollapseExample2">
+                                        <div class="product-brands limit-list-item">
+                                            <ul>
+                                                <% business_skills.forEach(function(skill) { %>
+                                                    <li>
+                                                        <div class="checkbox-theme-default custom-checkbox ">
+                                                            <input class="checkbox" name="skills"
+                                                                value="<%- skill._id%>" type="checkbox"
+                                                                id="check-<%- sr %>">
+                                                            <label for="check-<%- sr %>">
+                                                                <span class="checkbox-text">
+                                                                    <%- skill.name%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <% sr++%>
+                                                        <% }) %>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </aside>
+                            <aside class="product-sidebar-widget mb-30">
+                                <% if (soft_skills.length> 0) {
+                                    let sr = 1;
+                                    %>
+
+                                    <div class="widget_title" data-bs-toggle="collapse"
+                                        data-bs-target="#multiCollapseExample2" role="button" aria-expanded="true">
+                                        <h6>Soft Skills</h6>
+                                    </div>
+                                    <div class="card border-0 shadow-none multi-collapse mt-10 collapse show"
+                                        id="multiCollapseExample2">
+                                        <div class="product-brands limit-list-item">
+                                            <ul>
+                                                <% soft_skills.forEach(function(skill) { %>
+                                                    <li>
+                                                        <div class="checkbox-theme-default custom-checkbox ">
+                                                            <input class="checkbox" name="skills"
+                                                                value="<%- skill._id%>" type="checkbox"
+                                                                id="check-<%- sr %>">
+                                                            <label for="check-<%- sr %>">
+                                                                <span class="checkbox-text">
+                                                                    <%- skill.name%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <% sr++%>
+                                                        <% }) %>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </aside>
+
                             <aside class="product-sidebar-widget mb-30">
                                 <button type="submit" class="btn btn-primary"><img
                                         src="<%- locals.base %>img/svg/search.svg" alt="search"

@@ -11,7 +11,6 @@ const multer = require('multer');
  */
 const fs = require('fs');
 
-
 // Define multer storage configuration
 /**
  * ${1:Description placeholder}
@@ -19,7 +18,7 @@ const fs = require('fs');
  * @type {*}
  */
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination(req, file, cb) {
         const directory = 'public/resumes';
         // Create the directory if it doesn't exist
         if (!fs.existsSync(directory)) {
@@ -27,9 +26,9 @@ const storage = multer.diskStorage({
         }
         cb(null, directory);
     },
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now());
-    }
+    filename(req, file, cb) {
+        cb(null, `${file.fieldname}-${Date.now()}`);
+    },
 });
 
 // Define multer file filter
@@ -56,8 +55,8 @@ const fileFilter = function (req, file, cb) {
  * @type {*}
  */
 const upload = multer({
-    storage: storage,
-    fileFilter: fileFilter
+    storage,
+    fileFilter,
 });
 // Middleware for handling file upload
 /**
@@ -67,7 +66,6 @@ const upload = multer({
  */
 const uploadFile = upload.single('resume');
 
-
 module.exports = {
-    uploadFile
-}
+    uploadFile,
+};

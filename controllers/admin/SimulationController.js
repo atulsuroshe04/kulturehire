@@ -11,7 +11,6 @@ const Candidate = new mongoose.model("Candidate", candidateSchema);
 const skillSchema = require("../../schemas/skillsSchema");
 const Skill = new mongoose.model("Skill", skillSchema);
 
-
 /**
  * ${1:Description placeholder}
  *
@@ -22,7 +21,12 @@ const Skill = new mongoose.model("Skill", skillSchema);
  * @returns {*}
  */
 const simulationsList = async (request, response, next) => {
-    const simulations = await Simulation.find().populate(['candidate_id', 'program_id', 'primary_skills', 'secondary_skills']);
+    const simulations = await Simulation.find().populate([
+        "candidate_id",
+        "program_id",
+        "primary_skills",
+        "secondary_skills",
+    ]);
 
     response.render("../views/pages/admin/simulations/list", {
         title: "Candidates List",
@@ -52,7 +56,7 @@ const loadAddSimulation = async (request, response) => {
     if (step > 1) {
         existing_simulation = await Simulation.find({ _id: simulation_id });
     }
-    console.log(existing_simulation)
+    console.log(existing_simulation);
     response.render("../views/pages/admin/simulations/add", {
         title: "Simulation Add",
         name: "simulations",
@@ -65,7 +69,7 @@ const loadAddSimulation = async (request, response) => {
         skills,
         step,
         simulation_id,
-        existing_simulation
+        existing_simulation,
     });
 };
 
@@ -87,27 +91,35 @@ const saveSimulation = async (request, response) => {
             program_id: request.body.program_id,
             primary_skills: request.body.primary_skills,
             secondary_skills: request.body.secondary_skills,
-            ['milestone' + step + '_expectation']: request.body['milestone' + step + '_expectation'],
-            ['milestone' + step + '_skill']: request.body['milestone' + step + '_skill'],
-            ['milestone' + step + '_skill_rating']: request.body['milestone' + step + '_skill_rating'],
-            ['milestone' + step + '_submission_type']: request.body['milestone' + step + '_submission_type']
+            ["milestone" + step + "_expectation"]:
+                request.body["milestone" + step + "_expectation"],
+            ["milestone" + step + "_skill"]:
+                request.body["milestone" + step + "_skill"],
+            ["milestone" + step + "_skill_rating"]:
+                request.body["milestone" + step + "_skill_rating"],
+            ["milestone" + step + "_submission_type"]:
+                request.body["milestone" + step + "_submission_type"],
         };
         // Check if submission_type is 'file', if so, add milestone_file to milestoneData
-        if (request.body['milestone' + step + '_submission_type'] === 'file') {
-            milestoneData['milestone' + step + '_submission'] = request.files['milestone' + step + '_file'][0].filename;
+        if (request.body["milestone" + step + "_submission_type"] === "file") {
+            milestoneData["milestone" + step + "_submission"] =
+                request.files["milestone" + step + "_file"][0].filename;
         } else {
-            milestoneData['milestone' + step + '_submission'] = request.body['milestone' + step + '_text'];
+            milestoneData["milestone" + step + "_submission"] =
+                request.body["milestone" + step + "_text"];
         }
 
         let simulation;
 
         // If simulation_id is provided, try to update the existing document
         if (simulationId) {
+            milestoneData["completed_milestones"] = step;
             simulation = await Simulation.findByIdAndUpdate(
                 simulationId,
                 milestoneData,
-                { new: true } // Return the modified document
+                { new: true }, // Return the modified document
             );
+
         }
 
         // If simulation is not found (either simulationId is null or no document with that _id exists), add a new document
@@ -123,21 +135,24 @@ const saveSimulation = async (request, response) => {
             request.flash("success", "All Milestone data added successfully");
 
             response.redirect(
-                `${response.locals.base}admin/simulations/${response.getLocale()}`
+                `${response.locals.base}admin/simulations/${response.getLocale()}`,
             );
         } else {
             response.redirect(
-                `${response.locals.base}admin/simulations/add/${response.getLocale()}?step=` + step + `&simid=` + simulation?._id
+                `${response.locals.base}admin/simulations/add/${response.getLocale()}?step=` +
+                step +
+                `&simid=` +
+                simulation?._id,
             );
         }
     } catch (error) {
         const candidates = await Candidate.find();
         const programs = await Program.find();
         const skills = await Skill.find();
-        response.render('../views/pages/admin/simulations/add', {
-            title: 'Create New Simulation',
-            name: 'simulations',
-            menuType: 'admin',
+        response.render("../views/pages/admin/simulations/add", {
+            title: "Create New Simulation",
+            name: "simulations",
+            menuType: "admin",
             errors: error.errors,
             step: step,
             candidates,
@@ -146,17 +161,20 @@ const saveSimulation = async (request, response) => {
             input: [],
             successMessages: request.flash("success"),
             errorMessages: request.flash("error"),
-            simulation_id: ''
+            simulation_id: "",
         });
     }
-
-
-}
+};
 
 const viewSimulation = async (request, response) => {
     const { id } = request.params;
 
-    const simulation = await Simulation.findById({ _id: id }).populate(['candidate_id', 'program_id', 'primary_skills', 'secondary_skills']);
+    const simulation = await Simulation.findById({ _id: id }).populate([
+        "candidate_id",
+        "program_id",
+        "primary_skills",
+        "secondary_skills",
+    ]);
 
     response.render("../views/pages/admin/simulations/view", {
         title: "Candidates Simulation",
@@ -164,13 +182,13 @@ const viewSimulation = async (request, response) => {
         name: "simulations",
         successMessages: request.flash("success"),
         errorMessages: request.flash("error"),
-        simulation
+        simulation,
     });
-}
+};
 
 module.exports = {
     simulationsList,
     loadAddSimulation,
     saveSimulation,
-    viewSimulation
+    viewSimulation,
 };

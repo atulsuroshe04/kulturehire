@@ -8,10 +8,10 @@
  * @param {*} next
  */
 const adminDashboard = (request, response, next) => {
-  response.render("../views/pages/admin/dashboard", {
-    title: "Admin Dashboard",
-    menuType: "admin",
-    name: "admin-dashboard",
+  response.render('../views/pages/admin/dashboard', {
+    title: 'Admin Dashboard',
+    menuType: 'admin',
+    name: 'admin-dashboard',
   });
 };
 

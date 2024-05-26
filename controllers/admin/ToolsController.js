@@ -3,20 +3,19 @@
  *
  * @type {*}
  */
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 /**
  * ${1:Description placeholder}
  *
  * @type {*}
  */
-const toolsSchema = require("../../schemas/toolsSchema");
+const toolsSchema = require('../../schemas/toolsSchema');
 /**
  * ${1:Description placeholder}
  *
  * @type {*}
  */
-const Tool = new mongoose.model("Tools", toolsSchema);
-
+const Tool = new mongoose.model('Tools', toolsSchema);
 
 /**
  * Show Tools listing page
@@ -31,13 +30,13 @@ const Tool = new mongoose.model("Tools", toolsSchema);
 const toolsList = async (request, response, next) => {
   const data = await Tool.find();
 
-  response.render("../views/pages/admin/tools/list", {
-    title: "Tool List",
-    name: "tools",
-    menuType: "admin",
-    layout: "../views/layout/app.ejs",
-    successMessages: request.flash("success"),
-    errorMessages: request.flash("error"),
+  response.render('../views/pages/admin/tools/list', {
+    title: 'Tool List',
+    name: 'tools',
+    menuType: 'admin',
+    layout: '../views/layout/app.ejs',
+    successMessages: request.flash('success'),
+    errorMessages: request.flash('error'),
     data,
   });
 };
@@ -50,11 +49,11 @@ const toolsList = async (request, response, next) => {
  * @param {*} response
  */
 const loadAddTool = (request, response) => {
-  response.render("../views/pages/admin/tools/add", {
-    title: "Tool Add",
-    name: "tools",
-    menuType: "admin",
-    layout: "../views/layout/app.ejs",
+  response.render('../views/pages/admin/tools/add', {
+    title: 'Tool Add',
+    name: 'tools',
+    menuType: 'admin',
+    layout: '../views/layout/app.ejs',
   });
 };
 
@@ -70,11 +69,11 @@ const loadAddTool = (request, response) => {
 const loadEditTool = async (request, response) => {
   const { id } = request.params;
   const data = await Tool.find({ _id: id });
-  response.render("../views/pages/admin/tools/edit", {
-    title: "Tool Edit",
-    name: "tools",
-    menuType: "admin",
-    layout: "../views/layout/app.ejs",
+  response.render('../views/pages/admin/tools/edit', {
+    title: 'Tool Edit',
+    name: 'tools',
+    menuType: 'admin',
+    layout: '../views/layout/app.ejs',
     data: data[0],
   });
 };
@@ -99,12 +98,12 @@ const toolsSave = async (request, response, next) => {
 
   try {
     await toolObj.save();
-    request.flash("success", "Tool added successfully");
+    request.flash('success', 'Tool added successfully');
     response.redirect(
       `${response.locals.base}admin/tools/${response.getLocale()}`,
     );
   } catch (error) {
-    request.flash("error", error.message);
+    request.flash('error', error.message);
     response.redirect(
       `${response.locals.base}admin/tools/${response.getLocale()}`,
     );
@@ -133,12 +132,12 @@ const toolsUpdate = async (request, response, next) => {
     });
 
     if (updatedTool) {
-      request.flash("success", "Tool updated successfully");
+      request.flash('success', 'Tool updated successfully');
     } else {
-      request.flash("error", "Tool not found!");
+      request.flash('error', 'Tool not found!');
     }
   } catch (error) {
-    request.flash("error", error.message);
+    request.flash('error', error.message);
   }
   response.redirect(
     `${response.locals.base}admin/tools/${response.getLocale()}`,

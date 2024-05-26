@@ -57,6 +57,7 @@ app.use(session({
    store: store
 }))
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
 
 app.use(globalSession.globalSession)
 app.use(globalSession.errorMessage)

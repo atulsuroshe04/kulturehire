@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const UserSchema = require('../../schemas/candidateSchema');
-const User = new mongoose.model("user", UserSchema);
+
+const User = new mongoose.model('user', UserSchema);
 
 /**
  * Load employer profile page
@@ -13,24 +14,24 @@ const User = new mongoose.model("user", UserSchema);
  * @returns {*}
  */
 const loadProfile = async (request, response, next) => {
-    const currentUser = await User.findOne({ _id: request.session.user._id });
-    let currentUserData;
+  const currentUser = await User.findOne({ _id: request.session.user._id });
+  let currentUserData;
 
-    if (currentUser) {
-        const { password, ...userData } = currentUser.toObject();
-        currentUserData = userData;
-    } else {
-        console.log("User not found");
-    }
+  if (currentUser) {
+    const { password, ...userData } = currentUser.toObject();
+    currentUserData = userData;
+  } else {
+    console.log('User not found');
+  }
 
-    console.log(currentUserData);
-    response.render("../views/pages/candidate/profile", {
-        title: "Candidate Profile",
-        name: "candidate-profile",
-        menuType: "candidate",
-        name: "candidate-profile",
-        data: currentUserData
-    });
+  console.log(currentUserData);
+  response.render('../views/pages/candidate/profile', {
+    title: 'Candidate Profile',
+    name: 'candidate-profile',
+    menuType: 'candidate',
+    name: 'candidate-profile',
+    data: currentUserData,
+  });
 };
 
 /**
@@ -44,26 +45,26 @@ const loadProfile = async (request, response, next) => {
  * @returns {*}
  */
 const loadProfileUpdate = async (request, response, next) => {
-    const currentUser = await User.findOne({ _id: request.session.user._id });
-    let currentUserData;
+  const currentUser = await User.findOne({ _id: request.session.user._id });
+  let currentUserData;
 
-    if (currentUser) {
-        const { password, ...userData } = currentUser.toObject();
-        currentUserData = userData;
-    } else {
-        console.log("User not found");
-    }
+  if (currentUser) {
+    const { password, ...userData } = currentUser.toObject();
+    currentUserData = userData;
+  } else {
+    console.log('User not found');
+  }
 
-    response.render("../views/pages/candidate/profile-update", {
-        title: "Candidate Profile",
-        name: "candidate-profile",
-        menuType: "candidate",
-        name: "candidate-profile",
-        data: currentUserData
-    });
+  response.render('../views/pages/candidate/profile-update', {
+    title: 'Candidate Profile',
+    name: 'candidate-profile',
+    menuType: 'candidate',
+    name: 'candidate-profile',
+    data: currentUserData,
+  });
 };
 
 module.exports = {
-    loadProfile,
-    loadProfileUpdate
+  loadProfile,
+  loadProfileUpdate,
 };

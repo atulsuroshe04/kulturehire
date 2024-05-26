@@ -1,18 +1,18 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const hardSkillsSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Name field is required !"],
+      required: [true, 'Name field is required !'],
     },
     status: {
       type: String,
-      enum: ["active", "inactive"],
-      default: "active",
+      enum: ['active', 'inactive'],
+      default: 'active',
     },
-    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    updatedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    updatedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   },
   { timestamps: true },
 );

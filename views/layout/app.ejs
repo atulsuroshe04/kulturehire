@@ -1,6 +1,6 @@
 <%- include('../partials/_header') %>
 
-    <body class="layout-light side-menu">
+    <body class="layout-light <% if(menuType === 'employer') { %>top-menu <% }else{ %>side-menu <%}%>">
         <div class="mobile-search">
             <form action="<%- locals.base %>" class="search-form">
                 <img src="<%- locals.base %>img/svg/search.svg" alt="search" class="svg">
@@ -35,7 +35,7 @@
         </div>
         <div class="overlay-dark-sidebar"></div>
         <!-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDduF2tLXicDEPDMAtC6-NLOekX0A5vlnY"></script>  -->
-        <!-- <script src="<%- locals.base %>js/env.js"></script> -->
+        <script src="<%- locals.base %>js/env.js"></script>
         <script>
             var env = {
                 iconLoaderUrl: "<%- locals.base %>js/json/icons.json",

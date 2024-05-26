@@ -8,11 +8,11 @@
  * @param {*} next
  */
 const employerDashboard = (request, response, next) => {
-  response.render("../views/pages/employer/dashboard", {
-    title: "employer Dashboard",
-    name: "employer-dashboard",
-    menuType: "employer",
-    name: "employer-dashboard",
+  response.render('../views/pages/employer/dashboard', {
+    title: 'employer Dashboard',
+    name: 'employer-dashboard',
+    menuType: 'employer',
+    name: 'employer-dashboard',
   });
 };
 

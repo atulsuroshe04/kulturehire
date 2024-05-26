@@ -1,0 +1,205 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="shop-breadcrumb">
+                <div class="breadcrumb-main">
+                    <h4 class="text-capitalize breadcrumb-title"></h4>
+                    <div class="breadcrumb-action justify-content-center flex-wrap">
+                        <nav aria-label="breadcrumb">
+                            <!-- <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#"><i class="las la-home"></i>App</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><%- __('job-search-list') %></li>
+                            </ol> -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 mb-xl-50 mb-30">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="search-style-2 global-shadow ">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="products_page product_page--grid mb-30">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="columns-1 col-lg-8 col-sm-10">
+                <div class="widget">
+                    <div class="widget-header-title px-20 py-15">
+                        <h6 class="d-flex align-content-center fw-500">
+                            <img src="<%- locals.base %>img/svg/sliders.svg" alt="sliders" class="svg"> Filters
+                        </h6>
+                    </div>
+                    <div class="category_sidebar">
+                        <form id="searchForm" method="POST">
+                            <aside class="product-sidebar-widget mb-30">
+                                <div class="widget_title nocollapse">
+                                    <!-- <h6>Location</h6> -->
+                                </div>
+                                <div class="card border-0 shadow-none ">
+                                    <div class="location-search">
+                                        <!-- <img src="<%- locals.base %>img/svg/map-pin.svg" alt="map-pin" class="svg"> -->
+                                        <input class="form-control border-grey box-shadow-none" name="location"
+                                            type="search" placeholder="Location" aria-label="Search">
+                                    </div>
+                                </div>
+                            </aside>
+
+                            <aside class="product-sidebar-widget mb-30">
+                                <% if (skills.length> 0) {
+                                    let sr = 1;
+                                    %>
+
+                                    <div class="widget_title" data-bs-toggle="collapse"
+                                        data-bs-target="#multiCollapseExample2" role="button" aria-expanded="true">
+                                        <h6>Primary Skills</h6>
+                                    </div>
+                                    <div class="card border-0 shadow-none multi-collapse mt-10 collapse show"
+                                        id="multiCollapseExample2">
+                                        <div class="product-brands limit-list-item">
+                                            <ul>
+                                                <% skills.forEach(function(skill) { %>
+                                                    <li>
+                                                        <div class="checkbox-theme-default custom-checkbox ">
+                                                            <input class="checkbox" name="skills"
+                                                                value="<%- skill._id%>" type="checkbox"
+                                                                id="check-<%- sr %>">
+                                                            <label for="check-<%- sr %>">
+                                                                <span class="checkbox-text">
+                                                                    <%- skill.name%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <% sr++%>
+                                                        <% }) %>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </aside>
+                            <aside class="product-sidebar-widget mb-30">
+                                <% if (skills.length> 0) {
+                                    let srs = 1;
+                                    %>
+
+                                    <div class="widget_title" data-bs-toggle="collapse"
+                                        data-bs-target="#multiCollapseExample2" role="button" aria-expanded="true">
+                                        <h6>Program</h6>
+                                    </div>
+                                    <div class="card border-0 shadow-none multi-collapse mt-10 collapse show"
+                                        id="multiCollapseExample2">
+                                        <div class="product-brands limit-list-item">
+                                            <ul>
+                                                <% programs.forEach(function(program) { %>
+                                                    <li>
+                                                        <div class="checkbox-theme-default custom-checkbox ">
+                                                            <input class="checkbox" name="program_id" type="checkbox"
+                                                                value="<%- program._id%>" id="checks-<%- srs%>">
+                                                            <label for="checks-<%- srs%>">
+                                                                <span class="checkbox-text">
+                                                                    <%- program.name%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <% srs++%>
+                                                        <% }) %>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </aside>
+                            <aside class="product-sidebar-widget mb-30">
+                                <button type="submit" class="btn btn-primary"><img
+                                        src="<%- locals.base %>img/svg/search.svg" alt="search"
+                                        class="svg">search</button>
+                            </aside>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="columns-2 col-lg-12 mt-xl-0">
+
+                <div class="row product-page-list justify-content-center mt-20" id="searchResult">
+                    <% if (simulations.length> 0) {
+                        %>
+                        <% simulations.forEach(function(row) { var mileston_percent=(100 * row.completed_milestones) /
+                            15 %>
+                            <div class="col-12 mb-25 px-10">
+                                <div class="card job job--list">
+                                    <div class="h-100">
+                                        <div class="job-item px-25 py-30">
+                                            <div
+                                                class="card-body p-0  d-flex align-items-sm-center align-items-start flex-wrap">
+                                                <div class="job-item__body text-capitalize d-flex flex-wrap">
+                                                    <div class="job-item__image d-flex align-items-center">
+                                                        <a href="#">
+                                                            <div class="generateAvatar job-item__image-img img-fluid"
+                                                                src="<%- locals.base %>img/stats.png"
+                                                                alt="digital-chair"><%-
+                                                                    row.candidate_id.name.split(' ').slice(0, 2).map(word => word.charAt(0)).join('')%></div>
+                                                            <div class="job-item__title">
+                                                                <a href="jobDetails.html">
+                                                                    <h6 class="card-title"><%- row.candidate_id.name%>
+                                                                    </h6>
+                                                                </a>
+                                                                <span><%- row.candidate_id.current_location%></span>
+                                                            </div>
+                                                    </div>
+                                                    <div class="job-item__content d-flex">
+
+                                                        <div class="job-type">
+                                                            <span>Program</span>
+                                                            <h6><%- row.program_id?.name%></h6>
+                                                        </div>
+                                                        <div class="job-deadline">
+                                                            <span>Milestone Prgoress</span>
+                                                            <div class="progress-wrap d-flex align-items-center mb-15">
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-primary"
+                                                                        role="progressbar" style="width: <%- mileston_percent %>%;"
+                                                                        aria-valuenow="30" aria-valuemin="0"
+                                                                        aria-valuemax="100"></div>
+                                                                </div>
+                                                                <span class="progress-percentage"><%- mileston_percent %>%</span>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="job-item__button d-flex flex-wrap my-sm-0 my-10">
+                                                <a
+                                                    href="<%- locals.base %>employer/simulation/<%- row.id %>/<%- locale %>"><button
+                                                        class="btn btn-default btn-squared color-none btn-outline-none px-20">View
+                                                        details
+                                                    </button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+                <% }) %>
+                    <% } %>
+
+            </div>
+            <div class="spin-container text-center d-none">
+                <div class="dm-spin-dots spin-sm">
+                    <span class="spin-dot badge-dot dot-primary"></span>
+                    <span class="spin-dot badge-dot dot-primary"></span>
+                    <span class="spin-dot badge-dot dot-primary"></span>
+                    <span class="spin-dot badge-dot dot-primary"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

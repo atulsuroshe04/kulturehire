@@ -4,14 +4,14 @@
  *
  * @type {*}
  */
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 /**
  * ${1:Description placeholder}
  * @date 4/12/2024 - 5:19:50 PM
  *
  * @type {*}
  */
-const employerSchema = require("../../schemas/employerSchema");
+const employerSchema = require('../../schemas/employerSchema');
 
 /**
  * ${1:Description placeholder}
@@ -19,7 +19,7 @@ const employerSchema = require("../../schemas/employerSchema");
  *
  * @type {*}
  */
-const Employer = new mongoose.model("Employers", employerSchema);
+const Employer = new mongoose.model('Employers', employerSchema);
 
 // Show softskills listing page
 /**
@@ -35,13 +35,13 @@ const Employer = new mongoose.model("Employers", employerSchema);
 const employerList = async (request, response, next) => {
   const data = await Employer.find();
 
-  response.render("../views/pages/admin/employers/list", {
-    title: "Employers List",
-    name: "employers",
-    menuType: "admin",
-    layout: "../views/layout/app.ejs",
-    successMessages: request.flash("success"),
-    errorMessages: request.flash("error"),
+  response.render('../views/pages/admin/employers/list', {
+    title: 'Employers List',
+    name: 'employers',
+    menuType: 'admin',
+    layout: '../views/layout/app.ejs',
+    successMessages: request.flash('success'),
+    errorMessages: request.flash('error'),
     data,
   });
 };
@@ -55,12 +55,12 @@ const employerList = async (request, response, next) => {
  * @param {*} response
  */
 const loadAddEmployer = (request, response) => {
-  response.render("../views/pages/admin/employers/add", {
-    title: "Employer Add",
-    name: "employers",
-    menuType: "admin",
-    layout: "../views/layout/app.ejs",
-    input: []
+  response.render('../views/pages/admin/employers/add', {
+    title: 'Employer Add',
+    name: 'employers',
+    menuType: 'admin',
+    layout: '../views/layout/app.ejs',
+    input: [],
   });
 };
 
@@ -77,11 +77,11 @@ const loadAddEmployer = (request, response) => {
 const loadEditEmployer = async (request, response) => {
   const { id } = request.params;
   const data = await Employer.find({ _id: id });
-  response.render("../views/pages/admin/employers/edit", {
-    title: "Employer Edit",
-    name: "employers",
-    menuType: "admin",
-    layout: "../views/layout/app.ejs",
+  response.render('../views/pages/admin/employers/edit', {
+    title: 'Employer Edit',
+    name: 'employers',
+    menuType: 'admin',
+    layout: '../views/layout/app.ejs',
     data: data[0],
   });
 };
@@ -98,22 +98,36 @@ const loadEditEmployer = async (request, response) => {
  * @returns {*}
  */
 const employerSave = async (request, response, next) => {
-  const { company_name, gst_number, location, linkedin_url, official_email_address, person_name, official_contact_number,
-    status } = request.body;
+  const {
+    company_name,
+    gst_number,
+    location,
+    linkedin_url,
+    official_email_address,
+    person_name,
+    official_contact_number,
+    status,
+  } = request.body;
 
   const employerObj = new Employer({
-    company_name, gst_number, location, linkedin_url, official_email_address, person_name, official_contact_number,
-    status
+    company_name,
+    gst_number,
+    location,
+    linkedin_url,
+    official_email_address,
+    person_name,
+    official_contact_number,
+    status,
   });
 
   try {
     await employerObj.save();
-    request.flash("success", "Employer added successfully");
+    request.flash('success', 'Employer added successfully');
     response.redirect(
       `${response.locals.base}admin/employer/${response.getLocale()}`,
     );
   } catch (error) {
-    request.flash("error", error.message);
+    request.flash('error', error.message);
     response.status(500).json({ message: error.message }); // Handle error
   }
 };
@@ -141,12 +155,12 @@ const employerUpdate = async (request, response, next) => {
     });
 
     if (updatedEmployer) {
-      request.flash("success", "Employer updated successfully");
+      request.flash('success', 'Employer updated successfully');
     } else {
-      request.flash("error", "Employer not found!");
+      request.flash('error', 'Employer not found!');
     }
   } catch (error) {
-    request.flash("error", error.message);
+    request.flash('error', error.message);
   }
   response.redirect(
     `${response.locals.base}admin/employer/${response.getLocale()}`,

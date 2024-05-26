@@ -3,19 +3,19 @@
  *
  * @type {*}
  */
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 /**
  * ${1:Description placeholder}
  *
  * @type {*}
  */
-const hardSkillsSchema = require("../../schemas/hardSkillsSchema");
+const hardSkillsSchema = require('../../schemas/hardSkillsSchema');
 /**
  * ${1:Description placeholder}
  *
  * @type {*}
  */
-const HardSkill = new mongoose.model("hardSkills", hardSkillsSchema);
+const HardSkill = new mongoose.model('hardSkills', hardSkillsSchema);
 
 /**
  *Show hardskills listing page
@@ -31,13 +31,13 @@ const hardSkillsList = async (request, response, next) => {
   const data = await HardSkill.find();
   console.log(data);
 
-  response.render("../views/pages/admin/hardskills/list", {
-    title: "Hard Skills List",
-    name: "hardskills",
-    menuType: "admin",
-    layout: "../views/layout/app.ejs",
-    successMessages: request.flash("success"),
-    errorMessages: request.flash("error"),
+  response.render('../views/pages/admin/hardskills/list', {
+    title: 'Hard Skills List',
+    name: 'hardskills',
+    menuType: 'admin',
+    layout: '../views/layout/app.ejs',
+    successMessages: request.flash('success'),
+    errorMessages: request.flash('error'),
     data,
   });
 };
@@ -50,10 +50,10 @@ const hardSkillsList = async (request, response, next) => {
  * @param {*} response
  */
 const loadAddHardSkill = (request, response) => {
-  response.render("../views/pages/admin/hardskills/add", {
-    title: "Hard Skills Add",
-    name: "hardskills",
-    layout: "../views/layout/app.ejs",
+  response.render('../views/pages/admin/hardskills/add', {
+    title: 'Hard Skills Add',
+    name: 'hardskills',
+    layout: '../views/layout/app.ejs',
   });
 };
 
@@ -69,14 +69,13 @@ const loadAddHardSkill = (request, response) => {
 const loadEditHardSkill = async (request, response) => {
   const { id } = request.params;
   const data = await HardSkill.find({ _id: id });
-  response.render("../views/pages/admin/hardskills/edit", {
-    title: "Hard Skills Edit",
-    name: "hardskills",
-    layout: "../views/layout/app.ejs",
+  response.render('../views/pages/admin/hardskills/edit', {
+    title: 'Hard Skills Edit',
+    name: 'hardskills',
+    layout: '../views/layout/app.ejs',
     data: data[0],
   });
 };
-
 
 /**
  * Save hard skill page for data
@@ -99,12 +98,12 @@ const hardSkillsSave = async (request, response, next) => {
 
   try {
     await hardSkillObj.save();
-    request.flash("success", "Soft Skill added successfully");
+    request.flash('success', 'Soft Skill added successfully');
     response.redirect(
       `${response.locals.base}admin/hard-skills/${response.getLocale()}`,
     );
   } catch (error) {
-    request.flash("error", error.message);
+    request.flash('error', error.message);
     response.status(500).json({ message: error.message }); // Handle error
   }
 };
@@ -131,12 +130,12 @@ const hardSkillsUpdate = async (request, response, next) => {
     });
 
     if (updatedHardSkill) {
-      request.flash("success", "Hard Skill updated successfully");
+      request.flash('success', 'Hard Skill updated successfully');
     } else {
-      request.flash("error", "Hard Skill not found!");
+      request.flash('error', 'Hard Skill not found!');
     }
   } catch (error) {
-    request.flash("error", error.message);
+    request.flash('error', error.message);
   }
   response.redirect(
     `${response.locals.base}admin/hard-skills/${response.getLocale()}`,

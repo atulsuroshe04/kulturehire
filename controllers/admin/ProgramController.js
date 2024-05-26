@@ -3,19 +3,19 @@
  *
  * @type {*}
  */
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 /**
  * ${1:Description placeholder}
  *
  * @type {*}
  */
-const programSchema = require("../../schemas/programSchema");
+const programSchema = require('../../schemas/programSchema');
 /**
  * ${1:Description placeholder}
  *
  * @type {*}
  */
-const Program = new mongoose.model("program", programSchema);
+const Program = new mongoose.model('program', programSchema);
 
 /**
  *Show hardskills listing page
@@ -31,13 +31,13 @@ const programList = async (request, response, next) => {
   const data = await Program.find();
   console.log(data);
 
-  response.render("../views/pages/admin/programs/list", {
-    title: "Programs List",
-    name: "programs",
-    menuType: "admin",
-    layout: "../views/layout/app.ejs",
-    successMessages: request.flash("success"),
-    errorMessages: request.flash("error"),
+  response.render('../views/pages/admin/programs/list', {
+    title: 'Programs List',
+    name: 'programs',
+    menuType: 'admin',
+    layout: '../views/layout/app.ejs',
+    successMessages: request.flash('success'),
+    errorMessages: request.flash('error'),
     data,
   });
 };
@@ -50,11 +50,11 @@ const programList = async (request, response, next) => {
  * @param {*} response
  */
 const loadAddProgram = (request, response) => {
-  response.render("../views/pages/admin/programs/add", {
-    title: "Program Add",
-    name: "programs",
-    layout: "../views/layout/app.ejs",
-    menuType: "admin",
+  response.render('../views/pages/admin/programs/add', {
+    title: 'Program Add',
+    name: 'programs',
+    layout: '../views/layout/app.ejs',
+    menuType: 'admin',
   });
 };
 
@@ -70,15 +70,14 @@ const loadAddProgram = (request, response) => {
 const loadEditProgram = async (request, response) => {
   const { id } = request.params;
   const data = await Program.find({ _id: id });
-  response.render("../views/pages/admin/programs/edit", {
-    title: "Program Edit",
-    name: "programs",
-    layout: "../views/layout/app.ejs",
-    menuType: "admin",
+  response.render('../views/pages/admin/programs/edit', {
+    title: 'Program Edit',
+    name: 'programs',
+    layout: '../views/layout/app.ejs',
+    menuType: 'admin',
     data: data[0],
   });
 };
-
 
 /**
  * Save hard skill page for data
@@ -101,12 +100,12 @@ const programSave = async (request, response, next) => {
 
   try {
     await programObj.save();
-    request.flash("success", "Program added successfully");
+    request.flash('success', 'Program added successfully');
     response.redirect(
       `${response.locals.base}admin/programs/${response.getLocale()}`,
     );
   } catch (error) {
-    request.flash("error", error.message);
+    request.flash('error', error.message);
     response.status(500).json({ message: error.message }); // Handle error
   }
 };
@@ -133,12 +132,12 @@ const programUpdate = async (request, response, next) => {
     });
 
     if (updatedProgram) {
-      request.flash("success", "Program updated successfully");
+      request.flash('success', 'Program updated successfully');
     } else {
-      request.flash("error", "Program not found!");
+      request.flash('error', 'Program not found!');
     }
   } catch (error) {
-    request.flash("error", error.message);
+    request.flash('error', error.message);
   }
   response.redirect(
     `${response.locals.base}admin/programs/${response.getLocale()}`,

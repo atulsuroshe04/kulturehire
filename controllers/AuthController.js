@@ -1,7 +1,8 @@
-const bcrypt = require("bcrypt");
-const mongoose = require("mongoose");
-const userSchema = require("../schemas/userSchema");
-const User = new mongoose.model("User", userSchema);
+const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
+const userSchema = require('../schemas/userSchema');
+
+const User = new mongoose.model('User', userSchema);
 
 /**
  * show register page
@@ -12,10 +13,10 @@ const User = new mongoose.model("User", userSchema);
  * @param {*} next
  */
 const register = (request, response, next) => {
-  response.render("../views/auth/register", {
-    title: "Register",
-    name: "register",
-    layout: "../views/auth/auth_layout.ejs",
+  response.render('../views/auth/register', {
+    title: 'Register',
+    name: 'register',
+    layout: '../views/auth/auth_layout.ejs',
   });
 };
 
@@ -34,8 +35,8 @@ const signup = async (request, response, next) => {
     name: request.body.name,
     email: request.body.email,
   };
-  let hashedPassword = "";
-  if (request.body.password !== "") {
+  let hashedPassword = '';
+  if (request.body.password !== '') {
     hashedPassword = await bcrypt.hash(request.body.password, 12);
   }
   const user = new User({ ...userInfo, password: hashedPassword });
@@ -49,10 +50,10 @@ const signup = async (request, response, next) => {
       );
     })
     .catch((error) => {
-      response.render("../views/auth/register", {
-        title: "Register",
-        name: "register",
-        layout: "../views/auth/auth_layout.ejs",
+      response.render('../views/auth/register', {
+        title: 'Register',
+        name: 'register',
+        layout: '../views/auth/auth_layout.ejs',
         errors: error.errors,
         input: {
           name: request.body.name,
@@ -72,10 +73,10 @@ const signup = async (request, response, next) => {
  * @param {*} next
  */
 const login = (request, response, next) => {
-  response.render("../views/auth/login", {
-    title: "Login",
-    name: "login",
-    layout: "../views/auth/auth_layout.ejs",
+  response.render('../views/auth/login', {
+    title: 'Login',
+    name: 'login',
+    layout: '../views/auth/auth_layout.ejs',
   });
 };
 
@@ -107,16 +108,21 @@ const authenticate = async (request, response, next) => {
       };
       request.session.user = userInfo;
       request.session.save();
+      if (userInfo.userType === 'employer') {
+        response.redirect(
+          `${response.locals.base}employer/search-candidates/${response.getLocale()}`,
+        );
+        return;
+      }
       response.redirect(
         `${response.locals.base + userInfo.userType}/dashboard/${response.getLocale()}`,
       );
     } else {
-      request.session.errorMessage = "Wrong Credentials !";
+      request.session.errorMessage = 'Wrong Credentials !';
       response.redirect(response.locals.base);
     }
   }
 };
-
 
 /**
  * sign out user
@@ -141,10 +147,10 @@ const signOut = (request, response, next) => {
  * @param {*} next
  */
 const passwordReset = (request, response, next) => {
-  response.render("../views/auth/password_reset", {
-    title: "Password Reset",
-    name: "password_reset",
-    layout: "../views/auth/auth_layout.ejs",
+  response.render('../views/auth/password_reset', {
+    title: 'Password Reset',
+    name: 'password_reset',
+    layout: '../views/auth/auth_layout.ejs',
   });
 };
 

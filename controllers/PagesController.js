@@ -8,9 +8,9 @@
  * @param {*} next
  */
 const blank = (request, response, next) => {
-  response.render("../views/pages/blank/blank", {
-    title: "Blank",
-    name: "blank",
+  response.render('../views/pages/blank/blank', {
+    title: 'Blank',
+    name: 'blank',
   });
 };
 

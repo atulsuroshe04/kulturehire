@@ -27830,6 +27830,7 @@ body:after {
     flex: auto;
     margin-right: 30px;
     margin: 10px;
+    width: 20rem;
 }
 
 .job--list .job-item__content {
@@ -27904,7 +27905,7 @@ body:after {
 }
 
 .job-item__content.flex-column h6 {
-    width: 95px;
+    width: 150px;
 }
 
 .job-item__content.flex-column span {
@@ -39321,4 +39322,13 @@ body:after {
         -webkit-transform: rotate(0);
         transform: rotate(0);
     }
+}
+
+.generateAvatar {
+    background-color: var(--color-primary);
+    color: #f4f4f4;
+    padding: 19%;
+    justify-content: center;
+    display: flex;
+    border-radius: 50%;
 }

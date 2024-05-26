@@ -39,9 +39,9 @@ const activeLocale = (request, response, next) => {
  */
 const currentRoute = (request, response, next) => {
   response.locals.currentRoute = request.originalUrl
-    .split("/")
+    .split('/')
     .slice(0, -1)
-    .join("/")
+    .join('/')
     .toString();
   next();
 };

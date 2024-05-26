@@ -4,14 +4,14 @@
  *
  * @type {*}
  */
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 /**
  * ${1:Description placeholder}
  * @date 4/12/2024 - 5:19:50 PM
  *
  * @type {*}
  */
-const skillsSchema = require("../../schemas/skillsSchema");
+const skillsSchema = require('../../schemas/skillsSchema');
 
 /**
  * ${1:Description placeholder}
@@ -19,7 +19,7 @@ const skillsSchema = require("../../schemas/skillsSchema");
  *
  * @type {*}
  */
-const Skill = new mongoose.model("Skill", skillsSchema);
+const Skill = new mongoose.model('Skill', skillsSchema);
 
 // Show softskills listing page
 /**
@@ -35,13 +35,13 @@ const Skill = new mongoose.model("Skill", skillsSchema);
 const skillsList = async (request, response, next) => {
   const data = await Skill.find();
 
-  response.render("../views/pages/admin/skills/list", {
-    title: "Skills List",
-    name: "skills",
-    menuType: "admin",
-    layout: "../views/layout/app.ejs",
-    successMessages: request.flash("success"),
-    errorMessages: request.flash("error"),
+  response.render('../views/pages/admin/skills/list', {
+    title: 'Skills List',
+    name: 'skills',
+    menuType: 'admin',
+    layout: '../views/layout/app.ejs',
+    successMessages: request.flash('success'),
+    errorMessages: request.flash('error'),
     data,
   });
 };
@@ -55,11 +55,11 @@ const skillsList = async (request, response, next) => {
  * @param {*} response
  */
 const loadAddSkill = (request, response) => {
-  response.render("../views/pages/admin/skills/add", {
-    title: "Skills Add",
-    name: "skills",
-    menuType: "admin",
-    layout: "../views/layout/app.ejs",
+  response.render('../views/pages/admin/skills/add', {
+    title: 'Skills Add',
+    name: 'skills',
+    menuType: 'admin',
+    layout: '../views/layout/app.ejs',
   });
 };
 
@@ -76,11 +76,11 @@ const loadAddSkill = (request, response) => {
 const loadEditSkill = async (request, response) => {
   const { id } = request.params;
   const data = await Skill.find({ _id: id });
-  response.render("../views/pages/admin/skills/edit", {
-    title: "Skills Edit",
-    name: "skills",
-    menuType: "admin",
-    layout: "../views/layout/app.ejs",
+  response.render('../views/pages/admin/skills/edit', {
+    title: 'Skills Edit',
+    name: 'skills',
+    menuType: 'admin',
+    layout: '../views/layout/app.ejs',
     data: data[0],
   });
 };
@@ -107,12 +107,12 @@ const skillsSave = async (request, response, next) => {
 
   try {
     await skillObj.save();
-    request.flash("success", "Skill added successfully");
+    request.flash('success', 'Skill added successfully');
     response.redirect(
       `${response.locals.base}admin/skills/${response.getLocale()}`,
     );
   } catch (error) {
-    request.flash("error", error.message);
+    request.flash('error', error.message);
     response.status(500).json({ message: error.message }); // Handle error
   }
 };
@@ -141,12 +141,12 @@ const skillsUpdate = async (request, response, next) => {
     });
 
     if (updatedSkill) {
-      request.flash("success", "Soft Skill updated successfully");
+      request.flash('success', 'Soft Skill updated successfully');
     } else {
-      request.flash("error", "Soft Skill not found!");
+      request.flash('error', 'Soft Skill not found!');
     }
   } catch (error) {
-    request.flash("error", error.message);
+    request.flash('error', error.message);
   }
   response.redirect(
     `${response.locals.base}admin/skills/${response.getLocale()}`,

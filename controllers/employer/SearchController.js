@@ -26,6 +26,7 @@ const searchCandidate = async (request, response, next) => {
     const technical_skills = await Skill.find({ status: "active", type: 'technicalskill' });
     const business_skills = await Skill.find({ status: "active", type: 'businessskill' });
     const soft_skills = await Skill.find({ status: "active", type: 'softskill' });
+    const project_skills = await Skill.find({ status: "active", type: 'projectskill' });
     const programs = await Program.find({ status: "active" });
     response.render("../views/pages/employer/search-candidates", {
         title: "Search Candidates",
@@ -36,12 +37,13 @@ const searchCandidate = async (request, response, next) => {
         technical_skills,
         business_skills,
         soft_skills,
-        programs
+        programs,
+        project_skills
     });
 };
 
 const filterCandidates = async (request, response) => {
-    const { location, skills, program_id } = request.body;
+    const { location, skills, program_id, project_skills } = request.body;
 
     // Construct the query object
     const query = {};
@@ -51,11 +53,16 @@ const filterCandidates = async (request, response) => {
         query.location = location;
     }
 
+    const milestoneFields = Array.from({ length: 20 }, (_, i) => `milestone${i + 1}_skill`);
+
     // Add skills to the query if provided
     if (skills && skills.length > 0) {
         query.$and = [
             { primary_skills: { $in: skills } }
         ];
+    }
+    if (project_skills && project_skills.length > 0) {
+        query.$or = milestoneFields.map(field => ({ [field]: project_skills }));
     }
 
     // Add program_id to the query if provided

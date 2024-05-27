@@ -112,10 +112,10 @@ const saveSimulation = async (request, response) => {
         }
 
         let simulation;
+        milestoneData["completed_milestones"] = step;
 
         // If simulation_id is provided, try to update the existing document
         if (simulationId) {
-            milestoneData["completed_milestones"] = step;
             simulation = await Simulation.findByIdAndUpdate(
                 simulationId,
                 milestoneData,

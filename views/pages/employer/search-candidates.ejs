@@ -102,8 +102,8 @@
                                                         <div class="checkbox-theme-default custom-checkbox ">
                                                             <input class="checkbox" name="skills"
                                                                 value="<%- skill._id%>" type="checkbox"
-                                                                id="check-<%- sr %>">
-                                                            <label for="check-<%- sr %>">
+                                                                id="tcheck-<%- sr %>">
+                                                            <label for="tcheck-<%- sr %>">
                                                                 <span class="checkbox-text">
                                                                     <%- skill.name%>
                                                                 </span>
@@ -136,8 +136,8 @@
                                                         <div class="checkbox-theme-default custom-checkbox ">
                                                             <input class="checkbox" name="skills"
                                                                 value="<%- skill._id%>" type="checkbox"
-                                                                id="check-<%- sr %>">
-                                                            <label for="check-<%- sr %>">
+                                                                id="bcheck-<%- sr %>">
+                                                            <label for="bcheck-<%- sr %>">
                                                                 <span class="checkbox-text">
                                                                     <%- skill.name%>
                                                                 </span>
@@ -170,8 +170,8 @@
                                                         <div class="checkbox-theme-default custom-checkbox ">
                                                             <input class="checkbox" name="skills"
                                                                 value="<%- skill._id%>" type="checkbox"
-                                                                id="check-<%- sr %>">
-                                                            <label for="check-<%- sr %>">
+                                                                id="scheck-<%- sr %>">
+                                                            <label for="scheck-<%- sr %>">
                                                                 <span class="checkbox-text">
                                                                     <%- skill.name%>
                                                                 </span>
@@ -179,6 +179,40 @@
                                                         </div>
                                                     </li>
                                                     <% sr++%>
+                                                        <% }) %>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </aside>
+                            <aside class="product-sidebar-widget mb-30">
+                                <% if (project_skills.length> 0) {
+                                    let psr = 1;
+                                    %>
+
+                                    <div class="widget_title" data-bs-toggle="collapse"
+                                        data-bs-target="#multiCollapseExample2" role="button" aria-expanded="true">
+                                        <h6>Project Skills</h6>
+                                    </div>
+                                    <div class="card border-0 shadow-none multi-collapse mt-10 collapse show"
+                                        id="multiCollapseExample2">
+                                        <div class="product-brands limit-list-item">
+                                            <ul>
+                                                <% project_skills.forEach(function(skill) { %>
+                                                    <li>
+                                                        <div class="checkbox-theme-default custom-checkbox ">
+                                                            <input class="checkbox" name="project_skills"
+                                                                value="<%- skill._id%>" type="checkbox"
+                                                                id="pcheck-<%- psr %>">
+                                                            <label for="pcheck-<%- psr %>">
+                                                                <span class="checkbox-text">
+                                                                    <%- skill.name%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <% psr++%>
                                                         <% }) %>
 
                                             </ul>

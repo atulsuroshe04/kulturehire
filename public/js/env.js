@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 formDataObj[key] = value;
             }
         });
-        console.log(formDataObj)
 
         // Send the form data using fetch API
         try {

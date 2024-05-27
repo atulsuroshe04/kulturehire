@@ -25,7 +25,8 @@ const simulationSchema = mongoose.Schema(
       required: [true, 'Milestone 1 expectations field is required !'],
     },
     milestone1_skill: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Skill',
       required: [true, 'Milestone 1 skills field is required !'],
     },
     milestone1_skill_rating: {

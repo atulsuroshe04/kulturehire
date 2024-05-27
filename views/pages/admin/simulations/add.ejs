@@ -170,13 +170,19 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="name62">Mileston <%- step %> Skills</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="milestone<%- step %>_skill" placeholder="">
+                                                                <select name="milestone<%- step %>_skill"
+                                                                    id="select-tag5" class="form-control">
+                                                                    <% project_skills.forEach(function(row) { %>
+                                                                        <option value="<%- row._id %>"><%- row.name %>
+                                                                        </option>
+                                                                        <% }) %>
+                                                                </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="phoneNumber">mileston <%- step %> skills
                                                                         rating</label>
-                                                                <input type="tel" class="form-control"
+                                                                <input type="number" min="0" max="10"
+                                                                    class="form-control"
                                                                     name="milestone<%- step %>_skill_rating"
                                                                     placeholder="">
                                                             </div>

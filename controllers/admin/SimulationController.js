@@ -49,9 +49,10 @@ const simulationsList = async (request, response, next) => {
 const loadAddSimulation = async (request, response) => {
     const step = request.query.step || 1;
     const simulation_id = request.query.simid || "";
-    const candidates = await Candidate.find();
-    const programs = await Program.find();
-    const skills = await Skill.find();
+    const candidates = await Candidate.find({ 'status': 'active' });
+    const programs = await Program.find({ 'status': 'active' });
+    const skills = await Skill.find({ 'status': 'active' });
+    const project_skills = await Skill.find({ 'status': 'active', 'type': 'projectskill' });
     let existing_simulation = {};
     if (step > 1) {
         existing_simulation = await Simulation.find({ _id: simulation_id });
@@ -70,6 +71,7 @@ const loadAddSimulation = async (request, response) => {
         step,
         simulation_id,
         existing_simulation,
+        project_skills
     });
 };
 
@@ -146,9 +148,11 @@ const saveSimulation = async (request, response) => {
             );
         }
     } catch (error) {
-        const candidates = await Candidate.find();
-        const programs = await Program.find();
-        const skills = await Skill.find();
+        console.log(error);
+        const candidates = await Candidate.find({ 'status': 'active' });
+        const programs = await Program.find({ 'status': 'active' });
+        const skills = await Skill.find({ 'status': 'active' });
+        const project_skills = await Skill.find({ 'status': 'active', 'type': 'projectskill' });
         response.render("../views/pages/admin/simulations/add", {
             title: "Create New Simulation",
             name: "simulations",
@@ -162,6 +166,8 @@ const saveSimulation = async (request, response) => {
             successMessages: request.flash("success"),
             errorMessages: request.flash("error"),
             simulation_id: "",
+            existing_simulation: {},
+            project_skills,
         });
     }
 };

@@ -51,6 +51,11 @@ const candidateSchema = mongoose.Schema(
       type: String,
       required: [true, 'Enter your monthly expected salary !'],
     },
+    status: {
+      type: String,
+      enum: ['active', 'inactive'],
+      default: 'active',
+    },
     resume: {
       type: String,
       required: [true, 'Please select a resume file!'],

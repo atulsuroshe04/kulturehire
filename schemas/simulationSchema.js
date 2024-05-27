@@ -29,7 +29,8 @@ const simulationSchema = mongoose.Schema(
       required: [true, 'Milestone 1 skills field is required !'],
     },
     milestone1_skill_rating: {
-      type: String,
+      type: Number,
+      ref: 'Program',
       required: [true, 'Milestone 1 skills rating field is required !'],
     },
     milestone1_submission: {
@@ -43,10 +44,11 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone2_skill: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Skill',
     },
     milestone2_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone2_submission: {
       type: String,
@@ -58,10 +60,11 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone3_skill: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Skill',
     },
     milestone3_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone3_submission: {
       type: String,
@@ -73,10 +76,11 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone4_skill: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Skill',
     },
     milestone4_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone4_submission: {
       type: String,
@@ -88,10 +92,11 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone5_skill: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Skill',
     },
     milestone5_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone5_submission: {
       type: String,
@@ -103,10 +108,11 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone6_skill: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Skill',
     },
     milestone6_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone6_submission: {
       type: String,
@@ -118,10 +124,11 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone7_skill: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Skill',
     },
     milestone7_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone7_submission: {
       type: String,
@@ -133,10 +140,11 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone8_skill: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Skill',
     },
     milestone8_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone8_submission: {
       type: String,
@@ -151,7 +159,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone9_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone9_submission: {
       type: String,
@@ -166,7 +174,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone10_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone10_submission: {
       type: String,
@@ -181,7 +189,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone11_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone11_submission: {
       type: String,
@@ -196,7 +204,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone12_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone12_submission: {
       type: String,
@@ -211,7 +219,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone13_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone13_submission: {
       type: String,
@@ -226,7 +234,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone14_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone14_submission: {
       type: String,
@@ -241,7 +249,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone15_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone15_submission: {
       type: String,
@@ -256,7 +264,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone16_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone16_submission: {
       type: String,
@@ -271,7 +279,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone17_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone17_submission: {
       type: String,
@@ -286,7 +294,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone18_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone18_submission: {
       type: String,
@@ -301,7 +309,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone19_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone19_submission: {
       type: String,
@@ -316,7 +324,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone20_skill_rating: {
-      type: String,
+      type: Number,
     },
     milestone20_submission: {
       type: String,

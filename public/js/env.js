@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
                 var html = ''
                 result.map(sim => {
+                    var mileston_value = (100 * sim.completed_milestones) / 15;
+                    milestone_percent = Math.round(mileston_value);
                     html += `<div class="col-12 mb-25 px-10">
                     <div class="card job job--list">
                         <div class="h-100">
@@ -68,9 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                                 <span>Milestone Prgoress</span>
                                                 <div class="progress-wrap d-flex align-items-center mb-15">
                                                     <div class="progress">
-                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: `+ milestone_percent + `%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
-                                                    <span class="progress-percentage">30%</span>
+                                                    <span class="progress-percentage">`+ milestone_percent + `%</span>
                                                 </div>
                                             </div>
                                         </div>

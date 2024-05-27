@@ -99,29 +99,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+async function handleButtonClick(action) {
+    try {
+        const response = await
+            fetch('/employer/view-action', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ candidate_id: document.getElementById('candidate_id').value, simulation_id: document.getElementById('simulation_id').value, action: action })
+            });
 
-    const maskNumber = document.getElementById('maskNumberBtn');
-    maskNumber.addEventListener('click', async () => {
-        try {
-            const response = await
-                fetch('/employer/view-phone', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ candidate_id: document.getElementById('candidate_id').value, simulation_id: document.getElementById('simulation_id').value })
-                });
-
-            if (response.ok) {
-                const result = await response.json();
-                document.getElementById('maskNumber').innerHTML = document.getElementById('whole_number').value;
-            } else {
-                alert('Error:', response.statusText);
-            }
-        } catch (error) {
-            console.log('Fetch Error:', error);
+        if (response.ok) {
+            const result = await response.json();
+            document.getElementById('maskNumber').innerHTML = document.getElementById('whole_number').value;
+        } else {
+            alert('Error:', response.statusText);
         }
-    });
-})
+    } catch (error) {
+        console.log('Fetch Error:', error);
+    }
+}
 

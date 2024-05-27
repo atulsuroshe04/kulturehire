@@ -40,8 +40,8 @@ router.post('/filter-candidates',
     [localeMiddleware.localized, authMiddleware.isAuthenticated],
     SearchController.filterCandidates);
 
-router.post('/view-phone',
+router.post('/view-action',
     [localeMiddleware.localized, authMiddleware.isAuthenticated],
-    SearchController.viewPhoneNumber);
+    SearchController.viewAction);
 
 module.exports = router;

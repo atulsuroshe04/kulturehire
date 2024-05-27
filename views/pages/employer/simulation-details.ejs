@@ -154,9 +154,11 @@
                                 <div class="job-type">
                                     <h6>Phone:</h6>
                                     <span id="maskNumber"><%- maskNumber(simulation.candidate_id.phone) %></span>
-                                    <span style="margin-left: 15px"><button id="maskNumberBtn"
+                                    <span style="margin-left: 15px">
+                                        <butto onclick="handleButtonClick('view_contact')" id="maskNumberBtn"
                                             class="mr-2 btn btn-info btn-xs btn-squared btn-block ">View
-                                            Number</button></span>
+                                            Number</button>
+                                    </span>
                                 </div>
                                 <div class="job-type">
                                     <h6>Job Title:</h6>
@@ -169,6 +171,12 @@
                                 <div class="job-type">
                                     <h6>Expected Salary:</h6>
                                     <span>&#8377;<%- simulation.candidate_id.monthly_expected_salary %></span>
+                                </div>
+                                <div class="job-type">
+                                    <h6>Resume:</h6>
+                                    <span><a download href="/resumes/<%- simulation.candidate_id.resume %>"><button
+                                                onclick="handleButtonClick('resume_download')" id="maskNumberBtn"
+                                                class="mr-2 btn btn-info btn-xs btn-squared btn-block ">Download</button></a></span>
                                 </div>
                             </div>
                         </div>

@@ -5,8 +5,8 @@ const skillSchema = require("../../schemas/skillsSchema");
 const Skill = new mongoose.model("Skill", skillSchema);
 const programSchema = require("../../schemas/programSchema");
 const Program = new mongoose.model("Program", programSchema);
-const viewPhoneNumberSchema = require("../../schemas/viewPhoneNumberSchema");
-const ViewPhone = new mongoose.model("Viewed_contacts", viewPhoneNumberSchema);
+const viewActionSchema = require("../../schemas/viewActionSchema");
+const ViewAction = new mongoose.model("Viewed_contacts", viewActionSchema);
 // blank page
 /**
  * Load eployer dashbard page
@@ -96,24 +96,25 @@ const simulatinDetails = async (request, response) => {
     });
 }
 
-const viewPhoneNumber = async (request, response) => {
-    const { candidate_id, simulation_id } = request.body;
+const viewAction = async (request, response) => {
+    const { candidate_id, simulation_id, action } = request.body;
     const employer_id = request.session.user._id ? request.session.user._id : null;
 
     // Define the search criteria as a plain object
     const searchCriteria = {
         candidate_id,
         simulation_id,
-        employer_id
+        employer_id,
+        action
     };
 
     try {
         // Use findOne with the search criteria object
-        const view_phone = await ViewPhone.findOne(searchCriteria);
+        const view_phone = await ViewAction.findOne(searchCriteria);
 
         if (!view_phone) {
             // Create a new instance only if no existing record is found
-            const newViewPhone = new ViewPhone(searchCriteria);
+            const newViewPhone = new ViewAction(searchCriteria);
             await newViewPhone.save(); // Save the new object
             response.json({ status: "success" });
         } else {
@@ -129,5 +130,5 @@ module.exports = {
     searchCandidate,
     filterCandidates,
     simulatinDetails,
-    viewPhoneNumber
+    viewAction
 };

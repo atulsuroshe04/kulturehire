@@ -25,8 +25,7 @@ const simulationSchema = mongoose.Schema(
       required: [true, 'Milestone 1 expectations field is required !'],
     },
     milestone1_skill: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Skill',
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }],
       required: [true, 'Milestone 1 skills field is required !'],
     },
     milestone1_skill_rating: {
@@ -45,8 +44,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone2_skill: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Skill',
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }],
     },
     milestone2_skill_rating: {
       type: Number,
@@ -61,8 +59,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone3_skill: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Skill',
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }],
     },
     milestone3_skill_rating: {
       type: Number,
@@ -77,8 +74,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone4_skill: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Skill',
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }],
     },
     milestone4_skill_rating: {
       type: Number,
@@ -93,8 +89,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone5_skill: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Skill',
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }],
     },
     milestone5_skill_rating: {
       type: Number,
@@ -109,8 +104,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone6_skill: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Skill',
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }],
     },
     milestone6_skill_rating: {
       type: Number,
@@ -125,8 +119,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone7_skill: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Skill',
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }],
     },
     milestone7_skill_rating: {
       type: Number,
@@ -141,8 +134,7 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone8_skill: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Skill',
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }],
     },
     milestone8_skill_rating: {
       type: Number,

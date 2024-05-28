@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 /**
  * ${1:Description placeholder}
  * @date 4/12/2024 - 5:19:50 PM
@@ -20,6 +21,9 @@ const employerSchema = require('../../schemas/employerSchema');
  * @type {*}
  */
 const Employer = new mongoose.model('Employers', employerSchema);
+
+const userSchema = require('../../schemas/userSchema');
+const User = new mongoose.model('User', userSchema);
 
 // Show softskills listing page
 /**
@@ -109,6 +113,22 @@ const employerSave = async (request, response, next) => {
     status,
   } = request.body;
 
+
+  const pass = Math.floor(10000000 + Math.random() * 90000000)
+    .toString()
+    .substring(0, 8);
+
+  const hashedPassword = await bcrypt.hash(pass, 12);
+  const userObj = new User({
+    email: official_email_address,
+    name: person_name,
+    password: hashedPassword,
+    userType: 'employer'
+  });
+
+  const user = await userObj.save();
+  const userId = user._id;
+
   const employerObj = new Employer({
     company_name,
     gst_number,
@@ -118,7 +138,9 @@ const employerSave = async (request, response, next) => {
     person_name,
     official_contact_number,
     status,
+    userId
   });
+
 
   try {
     await employerObj.save();

@@ -180,8 +180,28 @@ const viewSimulation = async (request, response) => {
         "program_id",
         "primary_skills",
         "secondary_skills",
+        "milestone1_skill",
+        "milestone2_skill",
+        "milestone3_skill",
+        "milestone4_skill",
+        "milestone5_skill",
+        "milestone6_skill",
+        "milestone7_skill",
+        "milestone8_skill",
+        "milestone9_skill",
+        "milestone10_skill",
+        "milestone11_skill",
+        "milestone12_skill",
+        "milestone13_skill",
+        "milestone14_skill",
+        "milestone15_skill",
+        "milestone16_skill",
+        "milestone17_skill",
+        "milestone18_skill",
+        "milestone19_skill",
+        "milestone20_skill"
     ]);
-
+    console.log(simulation)
     response.render("../views/pages/admin/simulations/view", {
         title: "Candidates Simulation",
         menuType: "admin",

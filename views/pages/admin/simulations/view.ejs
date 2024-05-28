@@ -107,7 +107,14 @@
                                                                     <%- i %> Skills</label>
                                                             </div>
                                                             <div class="col-sm-9 pt-1">
-                                                                <%- simulation["milestone" + parseInt(i) + "_skill" ] %>
+                                                                <% const project_skills_arr=simulation["milestone" +
+                                                                    parseInt(i) + "_skill" ];
+                                                                    project_skills_arr.forEach(function(row, index) { %>
+                                                                    <%= row.name %>
+                                                                        <%= index < project_skills_arr.length - 1 ? ','
+                                                                            : '' %>
+                                                                            <% }) %>
+
                                                             </div>
                                                         </div>
                                                         <div class="form-group row mb-25">

@@ -261,20 +261,29 @@
                                 -- <span>UI Designer</span> -
                     </div>
                 </div> -->
+
                         <div class="nav-author__options">
-                            <ul>
-                                <li>
-                                    <a href="<%- locals.base + session.userType %>/profile/<%- locale %>">
-                                        <i class="uil uil-user"></i> Profile</a>
-                                </li>
-                            </ul>
-                            <a href="" onclick="                                   
+                            <% if(session.userType=='employer' ){ %>
+                                <ul>
+                                    <li>
+                                        <a href="<%- locals.base + session.userType %>/profile/<%- locale %>">
+                                            <i class="uil uil-user"></i> Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="<%- locals.base + session.userType %>/change-password/<%- locale %>">
+                                            <i class="uil uil-user"></i> Change Password</a>
+                                    </li>
+                                </ul>
+                                <% } %>
+                                    <a href="" onclick="                                   
                                 event.preventDefault()
                                 document.getElementById('logout').submit()" class="nav-author__signout">
-                                <i class="uil uil-sign-out-alt"></i> Sign Out</a>
-                            <form style="display:none;" id="logout" action="<%- locals.base %>logout" method="POST">
-                            </form>
+                                        <i class="uil uil-sign-out-alt"></i> Sign Out</a>
+                                    <form style="display:none;" id="logout" action="<%- locals.base %>logout"
+                                        method="POST">
+                                    </form>
                         </div>
+
                     </div>
                 </div>
             </li>

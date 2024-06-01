@@ -18,6 +18,18 @@ router.get(
     ProfileController.loadProfile,
 );
 
+router.get(
+    '/change-password/:language(en|gr|ar)',
+    [localeMiddleware.localized, authMiddleware.isAuthenticated],
+    ProfileController.changePassword,
+);
+
+router.post(
+    '/change-password/:language(en|gr|ar)',
+    [localeMiddleware.localized, authMiddleware.isAuthenticated],
+    ProfileController.updatePassword,
+);
+
 router.post(
     '/profile/update/:id/:language(en|gr|ar)',
     [localeMiddleware.localized, authMiddleware.isAuthenticated],

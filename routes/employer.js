@@ -8,44 +8,46 @@ const authMiddleware = require('../middlewares/auth');
 const localeMiddleware = require('../middlewares/locale');
 
 router.get(
-  '/dashboard/:language(en|gr|ar)',
-  [localeMiddleware.localized, authMiddleware.isAuthenticated],
-  DashboardController.employerDashboard,
+    '/dashboard/:language(en|gr|ar)',
+    [localeMiddleware.localized, authMiddleware.isAuthenticated],
+    DashboardController.employerDashboard,
 );
 router.get(
-  '/profile/:language(en|gr|ar)',
-  [localeMiddleware.localized, authMiddleware.isAuthenticated],
-  ProfileController.loadProfile,
-);
-
-router.get(
-  '/profile/update/:language(en|gr|ar)',
-  [localeMiddleware.localized, authMiddleware.isAuthenticated],
-  ProfileController.loadProfileUpdate,
-);
-
-router.get(
-  '/search-candidates/:language(en|gr|ar)',
-  [localeMiddleware.localized, authMiddleware.isAuthenticated],
-  SearchController.searchCandidate,
-);
-
-router.get(
-  '/simulation/:id/:language(en|gr|ar)',
-  [localeMiddleware.localized, authMiddleware.isAuthenticated],
-  SearchController.simulatinDetails,
+    '/profile/:language(en|gr|ar)',
+    [localeMiddleware.localized, authMiddleware.isAuthenticated],
+    ProfileController.loadProfile,
 );
 
 router.post(
-  '/filter-candidates',
-  [localeMiddleware.localized, authMiddleware.isAuthenticated],
-  SearchController.filterCandidates,
+    '/profile/update/:id/:language(en|gr|ar)',
+    [localeMiddleware.localized, authMiddleware.isAuthenticated],
+    ProfileController.updateProfile,
+);
+
+router.get(
+    '/search-candidates/:language(en|gr|ar)',
+    [localeMiddleware.localized, authMiddleware.isAuthenticated],
+    SearchController.searchCandidate,
+);
+
+router.get(
+    '/simulation/:id/:language(en|gr|ar)',
+    [localeMiddleware.localized, authMiddleware.isAuthenticated],
+    SearchController.simulatinDetails,
 );
 
 router.post(
-  '/view-action',
-  [localeMiddleware.localized, authMiddleware.isAuthenticated],
-  SearchController.viewAction,
+    '/filter-candidates',
+    [localeMiddleware.localized, authMiddleware.isAuthenticated],
+    SearchController.filterCandidates,
 );
+
+router.post(
+    '/view-action',
+    [localeMiddleware.localized, authMiddleware.isAuthenticated],
+    SearchController.viewAction,
+);
+
+
 
 module.exports = router;

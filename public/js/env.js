@@ -40,10 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 const result = await response.json();
                 var html = ''
-                result.map(sim => {
-                    var mileston_value = (100 * sim.completed_milestones) / 15;
-                    milestone_percent = Math.round(mileston_value);
-                    html += `<div class="col-12 mb-25 px-10">
+
+                if (result.length > 0) {
+                    result.map(sim => {
+                        var mileston_value = (100 * sim.completed_milestones) / 15;
+                        milestone_percent = Math.round(mileston_value);
+                        html += `<div class="col-12 mb-25 px-10">
                     <div class="card job job--list">
                         <div class="h-100">
                             <div class="job-item px-25 py-30">
@@ -87,7 +89,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </div>`;
-                })
+                    })
+                } else {
+                    html += `<div class="card-body">
+                    <div class="dm-empty text-center">
+                       <div class="dm-empty__image">
+                          <img src="http://localhost:3000/img/svg/1.png" alt="Admin Empty">
+                       </div>
+                       <div class="dm-empty__text">
+                          <p class="">No Data</p>
+                       </div>
+                    </div>
+                 </div>`;
+                }
                 document.getElementById('searchResult').innerHTML = html;
             } else {
                 console.error('Error:', response.statusText);

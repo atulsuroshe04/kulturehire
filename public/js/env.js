@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     html += `<div class="card-body">
                     <div class="dm-empty text-center">
                        <div class="dm-empty__image">
-                          <img src="http://localhost:3000/img/svg/1.png" alt="Admin Empty">
+                          <img src="https://fe.kulturehire.com/img/svg/1.png" alt="Admin Empty">
                        </div>
                        <div class="dm-empty__text">
                           <p class="">No Data</p>

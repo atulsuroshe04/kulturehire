@@ -333,7 +333,7 @@ const simulationSchema = mongoose.Schema(
     completed_milestones: {
       type: Number,
       default: 0,
-    }
+    },
   },
   { versionKey: false, timestamps: true },
 );

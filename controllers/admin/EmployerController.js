@@ -7,6 +7,7 @@ const employerSchema = require('../../schemas/employerSchema');
 const Employer = new mongoose.model('Employers', employerSchema);
 
 const userSchema = require('../../schemas/userSchema');
+
 const User = new mongoose.model('User', userSchema);
 
 // Show softskills listing page
@@ -95,7 +96,7 @@ const employerSave = async (request, response, next) => {
     person_name,
     official_contact_number,
     status,
-    send_email
+    send_email,
   } = request.body;
 
   try {
@@ -108,7 +109,7 @@ const employerSave = async (request, response, next) => {
       email: official_email_address,
       name: person_name,
       password: hashedPassword,
-      userType: 'employer'
+      userType: 'employer',
     });
 
     const user = await userObj.save();
@@ -123,15 +124,21 @@ const employerSave = async (request, response, next) => {
       person_name,
       official_contact_number,
       status,
-      userId
+      userId,
     });
-
-
 
     await employerObj.save();
     request.flash('success', 'Employer added successfully');
     if (send_email) {
-      await sendEmail(official_email_address, "Login details on KultureHire Feedback Engine", "Welcome to KultureHire. Below are the lgin details <br>Username - " + official_email_address + "<br>Password - " + pass, emailTemplate({ person_name, official_email_address, pass }));
+      await sendEmail(
+        official_email_address,
+        'Login details on KultureHire Feedback Engine',
+        `Welcome to KultureHire. Below are the lgin details <br>Username - ${
+          official_email_address
+        }<br>Password - ${
+          pass}`,
+        emailTemplate({ person_name, official_email_address, pass }),
+      );
     }
     response.redirect(
       `${response.locals.base}admin/employer/${response.getLocale()}`,
@@ -177,8 +184,8 @@ const employerUpdate = async (request, response, next) => {
   );
 };
 
-const emailTemplate = (data) => {
-  return `<table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed;background-color:#f9f9f9" id="bodyTable">
+const emailTemplate = (data) => (
+  `<table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed;background-color:#f9f9f9" id="bodyTable">
 	<tbody>
 		<tr>
 			<td style="padding-right:10px;padding-left:10px;" align="center" valign="top" id="bodyCell">
@@ -216,7 +223,9 @@ const emailTemplate = (data) => {
 										</tr>
 										<tr>
 											<td style="padding-bottom: 5px; padding-left: 20px; padding-right: 20px;" align="center" valign="top" class="mainTitle">
-												<h2 class="text" style="color:#000;font-family:Poppins,Helvetica,Arial,sans-serif;font-size:28px;font-weight:500;font-style:normal;letter-spacing:normal;line-height:36px;text-transform:none;text-align:center;padding:0;margin:0">Hi `+ data.person_name + `</h2>
+												<h2 class="text" style="color:#000;font-family:Poppins,Helvetica,Arial,sans-serif;font-size:28px;font-weight:500;font-style:normal;letter-spacing:normal;line-height:36px;text-transform:none;text-align:center;padding:0;margin:0">Hi ${
+  data.person_name
+  }</h2>
 											</td>
 										</tr>
 										<tr>
@@ -235,12 +244,16 @@ const emailTemplate = (data) => {
 														</tr>
                             <tr>
 															<td style="padding-bottom: 20px;" align="center" valign="top" class="description">
-																<p class="text" style="color:#666;font-family:'Open Sans',Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;font-style:normal;letter-spacing:normal;line-height:22px;text-transform:none;text-align:center;padding:0;margin:0">Username - `+ data.official_email_address + `</p>
+																<p class="text" style="color:#666;font-family:'Open Sans',Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;font-style:normal;letter-spacing:normal;line-height:22px;text-transform:none;text-align:center;padding:0;margin:0">Username - ${
+  data.official_email_address
+  }</p>
 															</td>
 														</tr>
                             <tr>
 															<td style="padding-bottom: 20px;" align="center" valign="top" class="description">
-																<p class="text" style="color:#666;font-family:'Open Sans',Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;font-style:normal;letter-spacing:normal;line-height:22px;text-transform:none;text-align:center;padding:0;margin:0">Password - `+ data.pass + `</p>
+																<p class="text" style="color:#666;font-family:'Open Sans',Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;font-style:normal;letter-spacing:normal;line-height:22px;text-transform:none;text-align:center;padding:0;margin:0">Password - ${
+  data.pass
+  }</p>
 															</td>
 														</tr>
 													</tbody>
@@ -311,7 +324,7 @@ const emailTemplate = (data) => {
 		</tr>
 	</tbody>
 </table>`
-}
+);
 
 module.exports = {
   employerList,

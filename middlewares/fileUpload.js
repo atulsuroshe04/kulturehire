@@ -18,17 +18,17 @@ const fs = require('fs');
  * @type {*}
  */
 const storage = multer.diskStorage({
-    destination(req, file, cb) {
-        const directory = 'public/resumes';
-        // Create the directory if it doesn't exist
-        if (!fs.existsSync(directory)) {
-            fs.mkdirSync(directory, { recursive: true });
-        }
-        cb(null, directory);
-    },
-    filename(req, file, cb) {
-        cb(null, `${file.fieldname}-${Date.now()}`);
-    },
+  destination(req, file, cb) {
+    const directory = 'public/resumes';
+    // Create the directory if it doesn't exist
+    if (!fs.existsSync(directory)) {
+      fs.mkdirSync(directory, { recursive: true });
+    }
+    cb(null, directory);
+  },
+  filename(req, file, cb) {
+    cb(null, `${file.fieldname}-${Date.now()}`);
+  },
 });
 
 // Define multer file filter
@@ -42,10 +42,10 @@ const storage = multer.diskStorage({
  * @returns {*}
  */
 const fileFilter = function (req, file, cb) {
-    if (!file.originalname.match(/\.(pdf|doc|docx)$/)) {
-        return cb(new Error('Only document files are allowed'));
-    }
-    cb(null, true);
+  if (!file.originalname.match(/\.(pdf|doc|docx)$/)) {
+    return cb(new Error('Only document files are allowed'));
+  }
+  cb(null, true);
 };
 
 // Create multer instance with storage and fileFilter configuration
@@ -55,8 +55,8 @@ const fileFilter = function (req, file, cb) {
  * @type {*}
  */
 const upload = multer({
-    storage,
-    fileFilter,
+  storage,
+  fileFilter,
 });
 // Middleware for handling file upload
 /**
@@ -67,5 +67,5 @@ const upload = multer({
 const uploadFile = upload.single('resume');
 
 module.exports = {
-    uploadFile,
+  uploadFile,
 };

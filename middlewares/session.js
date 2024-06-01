@@ -34,7 +34,7 @@ const maskNumber = (number) => {
   const maskedSection = numberStr.slice(0, -unmaskedLength).replace(/\d/g, '*');
   const unmaskedSection = numberStr.slice(-unmaskedLength);
   return maskedSection + unmaskedSection;
-}
+};
 
 module.exports = {
   globalSession,

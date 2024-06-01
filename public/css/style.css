@@ -2559,11 +2559,11 @@ h6 {
     color: var(--color-white);
 }
 
-.btn-primary:hover {
+/* .btn-primary:hover {
     color: var(--color-white);
     background-color: var(--bg-primary-hover) !important;
     border-color: var(--bg-primary-hover);
-}
+} */
 
 .btn-primary-hover {
     color: #fff;

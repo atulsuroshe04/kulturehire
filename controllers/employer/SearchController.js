@@ -112,7 +112,7 @@ const simulatinDetails = async (request, response) => {
         name: "search-candidates",
         menuType: "employer",
         name: "search-candidates",
-        simulation: simulation[0]
+        simulation: simulation[0] ?? {}
     });
 }
 

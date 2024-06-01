@@ -87,7 +87,7 @@
                                                                                 <% const
                                                                                     project_skills_arr=simulation["milestone"
                                                                                     + parseInt(i) + "_skill" ];
-                                                                                    project_skills_arr.forEach(function(row,
+                                                                                    project_skills_arr?.forEach(function(row,
                                                                                     index) { %>
                                                                                     <%= row.name %>
                                                                                         <%= index <
@@ -121,7 +121,7 @@
                                                                                     parseInt(i) + "_submission_type"
                                                                                     ]==='file' ){ %>
                                                                                     <%- "<a download href='/simulations/"
-                                                                                        +simulation.candidate_id._id+"/"+simulation['milestone'
+                                                                                        +simulation?.candidate_id._id+"/"+simulation['milestone'
                                                                                         + parseInt(i) + '_submission' ]
                                                                                         + "' class='mr-2 btn btn-info btn-xs btn-squared'>Download Attachment</a>"
                                                                                         %>

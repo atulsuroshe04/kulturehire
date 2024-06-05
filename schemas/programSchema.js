@@ -6,10 +6,6 @@ const programSchema = mongoose.Schema(
       type: String,
       required: [true, 'Name field is required !'],
     },
-    number_of_milestones: {
-      type: Number,
-      required: [true, 'Number of milestones field is required !'],
-    },
     status: {
       type: String,
       enum: ['active', 'inactive'],

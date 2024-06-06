@@ -20,6 +20,9 @@ const simulationSchema = mongoose.Schema(
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }],
       required: [true, 'Secondary skills field is required !'],
     },
+    milestone1_heading: {
+      type: String,
+    },
     milestone1_expectation: {
       type: String,
       required: [true, 'Milestone 1 expectations field is required !'],
@@ -40,6 +43,9 @@ const simulationSchema = mongoose.Schema(
     milestone1_submission_type: {
       type: String,
     },
+    milestone2_heading: {
+      type: String,
+    },
     milestone2_expectation: {
       type: String,
     },
@@ -53,6 +59,9 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone2_submission_type: {
+      type: String,
+    },
+    milestone3_heading: {
       type: String,
     },
     milestone3_expectation: {
@@ -70,6 +79,9 @@ const simulationSchema = mongoose.Schema(
     milestone3_submission_type: {
       type: String,
     },
+    milestone4_heading: {
+      type: String,
+    },
     milestone4_expectation: {
       type: String,
     },
@@ -83,6 +95,9 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone4_submission_type: {
+      type: String,
+    },
+    milestone5_heading: {
       type: String,
     },
     milestone5_expectation: {
@@ -100,6 +115,9 @@ const simulationSchema = mongoose.Schema(
     milestone5_submission_type: {
       type: String,
     },
+    milestone6_heading: {
+      type: String,
+    },
     milestone6_expectation: {
       type: String,
     },
@@ -113,6 +131,9 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone6_submission_type: {
+      type: String,
+    },
+    milestone7_heading: {
       type: String,
     },
     milestone7_expectation: {
@@ -130,6 +151,9 @@ const simulationSchema = mongoose.Schema(
     milestone7_submission_type: {
       type: String,
     },
+    milestone8_heading: {
+      type: String,
+    },
     milestone8_expectation: {
       type: String,
     },
@@ -143,6 +167,9 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone8_submission_type: {
+      type: String,
+    },
+    milestone9_heading: {
       type: String,
     },
     milestone9_expectation: {
@@ -160,6 +187,9 @@ const simulationSchema = mongoose.Schema(
     milestone9_submission_type: {
       type: String,
     },
+    milestone10_heading: {
+      type: String,
+    },
     milestone10_expectation: {
       type: String,
     },
@@ -173,6 +203,9 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone10_submission_type: {
+      type: String,
+    },
+    milestone11_heading: {
       type: String,
     },
     milestone11_expectation: {
@@ -190,6 +223,9 @@ const simulationSchema = mongoose.Schema(
     milestone11_submission_type: {
       type: String,
     },
+    milestone12_heading: {
+      type: String,
+    },
     milestone12_expectation: {
       type: String,
     },
@@ -203,6 +239,9 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone12_submission_type: {
+      type: String,
+    },
+    milestone13_heading: {
       type: String,
     },
     milestone13_expectation: {
@@ -220,6 +259,9 @@ const simulationSchema = mongoose.Schema(
     milestone13_submission_type: {
       type: String,
     },
+    milestone14_heading: {
+      type: String,
+    },
     milestone14_expectation: {
       type: String,
     },
@@ -233,6 +275,9 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone14_submission_type: {
+      type: String,
+    },
+    milestone15_heading: {
       type: String,
     },
     milestone15_expectation: {
@@ -250,6 +295,9 @@ const simulationSchema = mongoose.Schema(
     milestone15_submission_type: {
       type: String,
     },
+    milestone16_heading: {
+      type: String,
+    },
     milestone16_expectation: {
       type: String,
     },
@@ -263,6 +311,9 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone16_submission_type: {
+      type: String,
+    },
+    milestone17_heading: {
       type: String,
     },
     milestone17_expectation: {
@@ -280,6 +331,9 @@ const simulationSchema = mongoose.Schema(
     milestone17_submission_type: {
       type: String,
     },
+    milestone18_heading: {
+      type: String,
+    },
     milestone18_expectation: {
       type: String,
     },
@@ -295,6 +349,9 @@ const simulationSchema = mongoose.Schema(
     milestone18_submission_type: {
       type: String,
     },
+    milestone19_heading: {
+      type: String,
+    },
     milestone19_expectation: {
       type: String,
     },
@@ -308,6 +365,9 @@ const simulationSchema = mongoose.Schema(
       type: String,
     },
     milestone19_submission_type: {
+      type: String,
+    },
+    milestone20_heading: {
       type: String,
     },
     milestone20_expectation: {

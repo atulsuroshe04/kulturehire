@@ -55,7 +55,8 @@
                                                                         <a data-bs-toggle="collapse"
                                                                             data-parent="#accordion"
                                                                             href="#collapse<%-i%>" aria-expanded="true">
-                                                                            Miilestone <%- i %> details
+                                                                            <%- simulation["milestone" + parseInt(i)
+                                                                                + "_heading" ]%>
                                                                         </a>
                                                                     </h3>
 
@@ -68,8 +69,8 @@
                                                                             <div
                                                                                 class="col-sm-3 d-flex aling-items-center">
                                                                                 <label for="inputName"
-                                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">Milestone
-                                                                                    <%- i %> Expectation</label>
+                                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">
+                                                                                    Expectated Outcome</label>
                                                                             </div>
                                                                             <div class="col-sm-9 pt-1">
                                                                                 <%- simulation["milestone" + parseInt(i)
@@ -80,8 +81,8 @@
                                                                             <div
                                                                                 class="col-sm-3 d-flex aling-items-center">
                                                                                 <label for="inputName"
-                                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">Milestone
-                                                                                    <%- i %> Skills</label>
+                                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">
+                                                                                    Skills Used</label>
                                                                             </div>
                                                                             <div class="col-sm-9 pt-1">
                                                                                 <% const
@@ -100,8 +101,8 @@
                                                                             <div
                                                                                 class="col-sm-3 d-flex aling-items-center">
                                                                                 <label for="inputName"
-                                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">Milestone
-                                                                                    <%- i %> Rating</label>
+                                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">
+                                                                                    Internal/Quality Ratings</label>
                                                                             </div>
                                                                             <div class="col-sm-9 pt-1">
                                                                                 <%- simulation["milestone" + parseInt(i)
@@ -113,8 +114,8 @@
                                                                             <div
                                                                                 class="col-sm-3 d-flex aling-items-center">
                                                                                 <label for="inputName"
-                                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">Milestone
-                                                                                    <%- i %> Submisstion</label>
+                                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">
+                                                                                    Proof of work</label>
                                                                             </div>
                                                                             <div class="col-sm-9 pt-1">
                                                                                 <% if(simulation["milestone" +

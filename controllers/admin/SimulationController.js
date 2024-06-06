@@ -51,16 +51,25 @@ const loadAddSimulation = async (request, response) => {
   const simulation_id = request.query.simid || "";
   const candidates = await Candidate.find({ status: "active" });
   const programs = await Program.find({ status: "active" });
-  const skills = await Skill.find({ status: "active" });
   const project_skills = await Skill.find({
     status: "active",
-    type: "projectskill",
+    $or: [
+      { type: "projectskill" },
+      { type: "softskill" } // add more types as needed
+    ]
+  });
+  const primary_skills_data = await Skill.find({
+    status: "active",
+    type: "technicalskill"
+  });
+  const secondary_skills_data = await Skill.find({
+    status: "active",
+    type: "businessskill"
   });
   let existing_simulation = {};
   if (step > 1) {
     existing_simulation = await Simulation.find({ _id: simulation_id });
   }
-  console.log(existing_simulation);
   response.render("../views/pages/admin/simulations/add", {
     title: "Simulation Add",
     name: "simulations",
@@ -70,7 +79,8 @@ const loadAddSimulation = async (request, response) => {
     errorMessages: request.flash("error"),
     candidates,
     programs,
-    skills,
+    primary_skills_data,
+    secondary_skills_data,
     step,
     simulation_id,
     existing_simulation,
@@ -96,6 +106,8 @@ const saveSimulation = async (request, response) => {
       program_id: request.body.program_id,
       primary_skills: request.body.primary_skills,
       secondary_skills: request.body.secondary_skills,
+      ["milestone" + step + "_heading"]:
+        request.body["milestone" + step + "_heading"],
       ["milestone" + step + "_expectation"]:
         request.body["milestone" + step + "_expectation"],
       ["milestone" + step + "_skill"]:
@@ -144,16 +156,23 @@ const saveSimulation = async (request, response) => {
     } else {
       response.redirect(
         `${response.locals.base}admin/simulations/add/${response.getLocale()}?step=` +
-          step +
-          `&simid=` +
-          simulation?._id,
+        step +
+        `&simid=` +
+        simulation?._id,
       );
     }
   } catch (error) {
     console.log(error);
     const candidates = await Candidate.find({ status: "active" });
     const programs = await Program.find({ status: "active" });
-    const skills = await Skill.find({ status: "active" });
+    const primary_skills_data = await Skill.find({
+      status: "active",
+      type: "technicalskill"
+    });
+    const secondary_skills_data = await Skill.find({
+      status: "active",
+      type: "businessskill"
+    });
     const project_skills = await Skill.find({
       status: "active",
       type: "projectskill",
@@ -166,7 +185,8 @@ const saveSimulation = async (request, response) => {
       step: step,
       candidates,
       programs,
-      skills,
+      primary_skills_data,
+      secondary_skills_data,
       input: [],
       successMessages: request.flash("success"),
       errorMessages: request.flash("error"),

@@ -100,7 +100,7 @@
                                                         placeholder="Select 3 primary skills">
                                                         <% const pskills=existing_simulation[0] || { primary_skills: []
                                                             }; %>
-                                                            <% skills.forEach(function(row) { %>
+                                                            <% primary_skills_data.forEach(function(row) { %>
                                                                 <% const selected=pskills.primary_skills.some(skill=>
                                                                     skill._id.toString() === row._id.toString()) ?
                                                                     'selected' : ''; %>
@@ -120,7 +120,7 @@
                                                         class="form-control" multiple="multiple">
                                                         <% const hskills=existing_simulation[0] || { secondary_skills:
                                                             [] }; %>
-                                                            <% skills.forEach(function(row) { %>
+                                                            <% secondary_skills_data.forEach(function(row) { %>
                                                                 <% const selected=hskills.secondary_skills.some(skill=>
                                                                     skill._id.toString() === row._id.toString()) ?
                                                                     'selected' : ''; %>
@@ -160,7 +160,12 @@
                                                 <div class="card p-0 radius-md border-0">
                                                     <div class="card-body p-0">
                                                         <div class="edit-profile__body">
-
+                                                            <div class="form-group">
+                                                                <label for="name31">Milestone <%- step %>
+                                                                        Heading</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="milestone<%- step %>_heading" placeholder="">
+                                                            </div>
                                                             <div class="form-group">
                                                                 <label for="name31">Milestone <%- step %>
                                                                         Expectation</label>

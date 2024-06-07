@@ -34,8 +34,8 @@ const employerActions = async (request, response, next) => {
         .then((data) => {
             console.log(data);
             response.render('../views/pages/admin/reports/employer-actions', {
-                title: 'Repoort',
-                name: 'Employer Actions Report',
+                title: 'Employer Actions Report',
+                name: 'employer_actions',
                 menuType: 'admin',
                 data,
                 moment

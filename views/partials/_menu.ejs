@@ -64,6 +64,21 @@
                                     </a>
                                 </li>
                                 <% } %>
+                                    <li class="has-child <%- name === 'employer_actions' ? 'open':'' %>">
+                                        <a href="#" class="<%- name === 'employer_actions' ? 'active':'' %>">
+                                            <span class="nav-icon uil uil-users-alt"></span>
+                                            <span class="menu-text">Reports</span>
+                                            <span class="toggle-icon"></span>
+                                        </a>
+                                        <ul>
+                                            <li>
+                                                <a href="<%- locals.base %>admin/reports/employer-actions/<%- locale %>"
+                                                    class="<%- name === 'employer_actions' ?'active':'' %>">Employer
+                                                    Actions</a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
         </ul>
     </div>
 </div>

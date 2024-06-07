@@ -9,6 +9,7 @@ const EmployerController = require('../controllers/admin/EmployerController');
 const CandidatesController = require('../controllers/admin/CandidateController');
 const ToolsController = require('../controllers/admin/ToolsController');
 const SimulationController = require('../controllers/admin/SimulationController');
+const ReportController = require('../controllers/admin/ReportController');
 const authMiddleware = require('../middlewares/auth');
 const localeMiddleware = require('../middlewares/locale');
 const fileUploadMiddleware = require('../middlewares/fileUpload');
@@ -193,6 +194,11 @@ router.get(
   '/simulations/view/:id/:language(en|gr|ar)',
   [localeMiddleware.localized, authMiddleware.isAuthenticated],
   SimulationController.viewSimulation,
+);
+
+router.get('/reports/employer-actions/:language(en|gr|ar)',
+  [localeMiddleware.localized, authMiddleware.isAuthenticated],
+  ReportController.employerActions
 );
 
 module.exports = router;

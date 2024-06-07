@@ -30,13 +30,9 @@
 
                     </div>
                     <div class="job-details-card__middle">
-                        <h4>Simulation Description</h4>
-                        <p>There are have a many variations of passages of Lorem Ipsum available, but the randomised
-                            words which don' t look even slightly believable. If you are going to sdsss embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet
-                                        tend to repeat predefined chunks as necessary, making which don't first true
-                                        generator on the Internet.</p>
-                                        <h4>Simulations Data</h4>
+                        <h4>What is this project all about</h4>
+                        <p>This project is all about Understanding the career aspirations of GenZ. A public domain project where the users were asked to work on this end to end project starting with Problem Statement understanding, Data Collection, Data Standardisation, Data Cleaning, Data Analysis, Reporting, Dashboard Creating and finally present the same in a public platform.</p>
+                                        <h4>See how <%- simulation.candidate_id.name%> did this project</h4>
                                         <div class="tab-content" id="v-pills-tabContent">
                                             <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel"
                                                 aria-labelledby="v-pills-home-tab">
@@ -46,155 +42,142 @@
                                                     <div class="panel-group" id="accordion" role="tablist"
                                                         aria-multiselectable="true">
                                                         <!-- panel 1 -->
-                                                        <% for (let i=1; i <=simulation['completed_milestones']; i++) {
-                                                            %>
-                                                            <div class="panel">
-                                                                <div class="panel-heading" role="tab"
-                                                                    id="heading<%-i%>">
-                                                                    <h3 class="panel-title">
-                                                                        <a data-bs-toggle="collapse"
-                                                                            data-parent="#accordion"
-                                                                            href="#collapse<%-i%>" aria-expanded="true">
-                                                                            <%- simulation["milestone" + parseInt(i)
-                                                                                + "_heading" ]%>
-                                                                        </a>
-                                                                    </h3>
+                                                        <% for (let i=1; i <= simulation['completed_milestones']; i++)
+                                        { %>
+                                        <div class="panel">
+                                            <div class="panel-heading" role="tab" id="heading<%-i%>">
+                                                <h3 class="panel-title">
+                                                    <a data-bs-toggle="collapse" data-parent="#accordion"
+                                                        href="#collapse<%-i%>" aria-expanded="true">
+                                                        <%- simulation["milestone" + parseInt(i) + "_heading" ]%>
+                                                    </a>
+                                                </h3>
 
-                                                                </div>
-                                                                <div id="collapse<%-i%>"
-                                                                    class="panel-collapse collapse in" role="tabpanel"
-                                                                    aria-labelledby="heading<%-i%>">
-                                                                    <div class="panel-body">
-                                                                        <div class="form-group row mb-25">
-                                                                            <div
-                                                                                class="col-sm-3 d-flex aling-items-center">
-                                                                                <label for="inputName"
-                                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">
-                                                                                    Expectated Outcome</label>
-                                                                            </div>
-                                                                            <div class="col-sm-9 pt-1">
-                                                                                <%- simulation["milestone" + parseInt(i)
-                                                                                    + "_expectation" ] %>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row mb-25">
-                                                                            <div
-                                                                                class="col-sm-3 d-flex aling-items-center">
-                                                                                <label for="inputName"
-                                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">
-                                                                                    Skills Used</label>
-                                                                            </div>
-                                                                            <div class="col-sm-9 pt-1">
-                                                                                <% const
-                                                                                    project_skills_arr=simulation["milestone"
-                                                                                    + parseInt(i) + "_skill" ];
-                                                                                    project_skills_arr?.forEach(function(row,
-                                                                                    index) { %>
-                                                                                    <%= row.name %>
-                                                                                        <%= index <
-                                                                                            project_skills_arr.length -
-                                                                                            1 ? ',' : '' %>
-                                                                                            <% }) %>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row mb-25">
-                                                                            <div
-                                                                                class="col-sm-3 d-flex aling-items-center">
-                                                                                <label for="inputName"
-                                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">
-                                                                                    Internal/Quality Ratings</label>
-                                                                            </div>
-                                                                            <div class="col-sm-9 pt-1">
-                                                                                <%- simulation["milestone" + parseInt(i)
-                                                                                    + "_skill_rating" ] %>
-                                                                            </div>
-                                                                        </div>
+                                            </div>
+                                            <div id="collapse<%-i%>" class="panel-collapse collapse in" role="tabpanel"
+                                                aria-labelledby="heading<%-i%>">
+                                                <div class="panel-body">
+                                                    <div class="form-group row mb-25">
+                                                        <div class="col-sm-3 d-flex aling-items-center">
+                                                            <label for="inputName"
+                                                                class=" col-form-label color-dark fs-14 fw-500 align-center">
+                                                                Expectated Outcome</label>
+                                                        </div>
+                                                        <div class="col-sm-9 pt-1">
+                                                            <%- simulation["milestone" + parseInt(i) + "_expectation" ]
+                                                                %>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row mb-25">
+                                                        <div class="col-sm-3 d-flex aling-items-center">
+                                                            <label for="inputName"
+                                                                class=" col-form-label color-dark fs-14 fw-500 align-center">
+                                                                Skills Used</label>
+                                                        </div>
+                                                        <div class="col-sm-9 pt-1">
+                                                            <% const project_skills_arr=simulation["milestone" +
+                                                                parseInt(i) + "_skill" ];
+                                                                project_skills_arr?.forEach(function(row, index) { %>
+                                                                <%= row.name %>
+                                                                    <%= index < project_skills_arr.length - 1 ? ',' : ''
+                                                                        %>
+                                                                        <% }) %>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row mb-25">
+                                                        <div class="col-sm-3 d-flex aling-items-center">
+                                                            <label for="inputName"
+                                                                class=" col-form-label color-dark fs-14 fw-500 align-center">
+                                                                Internal/Quality Ratings</label>
+                                                        </div>
+                                                        <div class="col-sm-9 pt-1">
+                                                            <%- simulation["milestone" + parseInt(i) + "_skill_rating" ]
+                                                                %>
+                                                        </div>
+                                                    </div>
 
-                                                                        <div class="form-group row mb-25">
-                                                                            <div
-                                                                                class="col-sm-3 d-flex aling-items-center">
-                                                                                <label for="inputName"
-                                                                                    class=" col-form-label color-dark fs-14 fw-500 align-center">
-                                                                                    Proof of work</label>
-                                                                            </div>
-                                                                            <div class="col-sm-9 pt-1">
-                                                                                <% if(simulation["milestone" +
-                                                                                    parseInt(i) + "_submission_type"
-                                                                                    ]==='file' ){ %>
-                                                                                    <%- "<a download href='/simulations/"
-                                                                                        +simulation?.candidate_id._id+"/"+simulation['milestone'
-                                                                                        + parseInt(i) + '_submission' ]
-                                                                                        + "' class='mr-2 btn btn-info btn-xs btn-squared'>Download Attachment</a>"
-                                                                                        %>
+                                                    <div class="form-group row mb-25">
+                                                        <div class="col-sm-3 d-flex aling-items-center">
+                                                            <label for="inputName"
+                                                                class=" col-form-label color-dark fs-14 fw-500 align-center">
+                                                                Proof of work</label>
+                                                        </div>
+                                                        <div class="col-sm-9 pt-1">
+                                                            <% if(simulation["milestone" + parseInt(i)
+                                                                + "_submission_type" ]==='file' ){ %>
+                                                                <%- "<a download href='/simulations/"
+                                                                    +simulation?.candidate_id._id+"/"+simulation['milestone'
+                                                                    + parseInt(i) + '_submission' ]
+                                                                    + "' class='mr-2 btn btn-info btn-xs btn-squared'>Download Attachment</a>"
+                                                                    %>
 
-                                                                                        <% }else{ %>
-                                                                                            <%- simulation["milestone" +
-                                                                                                parseInt(i)
-                                                                                                + "_submission" ] %>
-                                                                                                <% } %>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <%}%>
+                                                                    <% }else{ %>
+                                                                        <%- simulation["milestone" + parseInt(i)
+                                                                            + "_submission" ] %>
+                                                                            <% } %>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <%}%>
                                 </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-30">
-                        <div class="job-details-widget">
-                            <h4>Information</h4>
-                            <div class="job-item__content d-inline-flex flex-column">
-                                <div class="job-type">
-                                    <h6>Name:</h6>
-                                    <span><%- simulation.candidate_id.name %></span>
-                                    <input type="hidden" id="candidate_id" value="<%- simulation.candidate_id._id%>">
-                                    <input type="hidden" id="simulation_id" value="<%- simulation._id%>">
-                                    <input type="hidden" id="whole_number" value="<%- simulation.candidate_id.phone%>">
-                                </div>
-                                <div class="job-type">
-                                    <h6>Email:</h6>
-                                    <span><%- simulation.candidate_id.email %></span>
-                                </div>
-                                <div class="job-type">
-                                    <h6>Phone:</h6>
-                                    <span id="maskNumber"><%- maskNumber(simulation.candidate_id.phone) %></span>
-                                    <span style="margin-left: 15px">
-                                        <butto onclick="handleButtonClick('view_contact')" id="maskNumberBtn"
-                                            class="mr-2 btn btn-info btn-xs btn-squared btn-block ">View
-                                            Number</button>
-                                    </span>
-                                </div>
-                                <div class="job-type">
-                                    <h6>Job Title:</h6>
-                                    <span><%- simulation.candidate_id.job_title %></span>
-                                </div>
-                                <div class="job-type">
-                                    <h6>Current Location:</h6>
-                                    <span><%- simulation.candidate_id.current_location %></span>
-                                </div>
-                                <div class="job-type">
-                                    <h6>Expected Salary:</h6>
-                                    <span>&#8377;<%- simulation.candidate_id.monthly_expected_salary %></span>
-                                </div>
-                                <div class="job-type">
-                                    <h6>Resume:</h6>
-                                    <span><a download href="/resumes/<%- simulation.candidate_id.resume %>"><button
-                                                onclick="handleButtonClick('resume_download')" id="maskNumberBtn"
-                                                class="mr-2 btn btn-info btn-xs btn-squared btn-block ">Download</button></a></span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-            function maskNumber(number) {
-                const numberStr = number.toString();
-                const mask = numberStr.slice(0, -4).replace(/\d/g, ' *'); return mask + numberStr.slice(-4);
-            } </script>
+    </div>
+    <div class="col-lg-4 mb-30">
+        <div class="job-details-widget">
+            <h4>Information</h4>
+            <div class="job-item__content d-inline-flex flex-column">
+                <div class="job-type">
+                    <h6>Name:</h6>
+                    <span><%- simulation.candidate_id.name %></span>
+                    <input type="hidden" id="candidate_id" value="<%- simulation.candidate_id._id%>">
+                    <input type="hidden" id="simulation_id" value="<%- simulation._id%>">
+                    <input type="hidden" id="whole_number" value="<%- simulation.candidate_id.phone%>">
+                </div>
+                <div class="job-type">
+                    <h6>Email:</h6>
+                    <span><%- simulation.candidate_id.email %></span>
+                </div>
+                <div class="job-type">
+                    <h6>Phone:</h6>
+                    <span id="maskNumber"><%- maskNumber(simulation.candidate_id.phone) %></span>
+                    <span style="margin-left: 15px">
+                        <butto onclick="handleButtonClick('view_contact')" id="maskNumberBtn"
+                            class="mr-2 btn btn-info btn-xs btn-squared btn-block ">View
+                            Number</button>
+                    </span>
+                </div>
+                <div class="job-type">
+                    <h6>Job Title:</h6>
+                    <span><%- simulation.candidate_id.job_title %></span>
+                </div>
+                <div class="job-type">
+                    <h6>Current Location:</h6>
+                    <span><%- simulation.candidate_id.current_location %></span>
+                </div>
+                <div class="job-type">
+                    <h6>Expected Salary:</h6>
+                    <span>&#8377;<%- simulation.candidate_id.monthly_expected_salary %></span>
+                </div>
+                <div class="job-type">
+                    <h6>Resume:</h6>
+                    <span><a download href="/resumes/<%- simulation.candidate_id.resume %>"><button
+                                onclick="handleButtonClick('resume_download')" id="maskNumberBtn"
+                                class="mr-2 btn btn-info btn-xs btn-squared btn-block ">Download</button></a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script>
+    function maskNumber(number) {
+        const numberStr = number.toString();
+        const mask = numberStr.slice(0, -4).replace(/\d/g, ' *'); return mask + numberStr.slice(-4);
+    } </script>

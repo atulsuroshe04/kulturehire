@@ -394,6 +394,9 @@ const simulationSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
+    candidate_location: {
+      type: String,
+    }
   },
   { versionKey: false, timestamps: true },
 );

@@ -101,6 +101,11 @@ const saveSimulation = async (request, response) => {
   const simulationId = request.body.simulation_id;
 
   try {
+    const candidate_location = await Candidate.findOne(
+      { _id: request.body.candidate_id },  // where clause
+      { current_location: 1, _id: 0 }       // Projection: include 'email' and exclude '_id'
+    );
+
     const milestoneData = {
       candidate_id: request.body.candidate_id,
       program_id: request.body.program_id,
@@ -128,6 +133,7 @@ const saveSimulation = async (request, response) => {
 
     let simulation;
     milestoneData["completed_milestones"] = step;
+    milestoneData["candidate_location"] = candidate_location.current_location;
 
     // If simulation_id is provided, try to update the existing document
     if (simulationId) {

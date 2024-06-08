@@ -18,13 +18,13 @@
                         <div class="job-item__image">
                             <a href="#">
                                 <div class="generateAvatar job-item__image-img img-fluid"><%-
-                                        simulation.candidate_id.name.split(' ').slice(0, 2).map(word => word.charAt(0)).join('') %></div>
+                                        simulation.candidate_id?.name.split(' ').slice(0, 2).map(word => word.charAt(0)).join('') %></div>
                             </a>
                             <div class="job-item__title">
                                 <a href="jobDetails.html">
-                                    <h3 class="card-title"><%- simulation.candidate_id.name %></h3>
+                                    <h3 class="card-title"><%- simulation.candidate_id?.name %></h3>
                                 </a>
-                                <span><%- simulation.candidate_id.current_location %></span>
+                                <span><%- simulation.candidate_id?.current_location %></span>
                             </div>
                         </div>
 
@@ -32,7 +32,7 @@
                     <div class="job-details-card__middle">
                         <h4>What is this project all about</h4>
                         <p>This project is all about Understanding the career aspirations of GenZ. A public domain project where the users were asked to work on this end to end project starting with Problem Statement understanding, Data Collection, Data Standardisation, Data Cleaning, Data Analysis, Reporting, Dashboard Creating and finally present the same in a public platform.</p>
-                                        <h4>See how <%- simulation.candidate_id.name%> did this project</h4>
+                                        <h4>See how <%- simulation.candidate_id?.name%> did this project</h4>
                                         <div class="tab-content" id="v-pills-tabContent">
                                             <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel"
                                                 aria-labelledby="v-pills-home-tab">
@@ -134,18 +134,18 @@
             <div class="job-item__content d-inline-flex flex-column">
                 <div class="job-type">
                     <h6>Name:</h6>
-                    <span><%- simulation.candidate_id.name %></span>
-                    <input type="hidden" id="candidate_id" value="<%- simulation.candidate_id._id%>">
+                    <span><%- simulation.candidate_id?.name %></span>
+                    <input type="hidden" id="candidate_id" value="<%- simulation.candidate_id?._id%>">
                     <input type="hidden" id="simulation_id" value="<%- simulation._id%>">
-                    <input type="hidden" id="whole_number" value="<%- simulation.candidate_id.phone%>">
+                    <input type="hidden" id="whole_number" value="<%- simulation.candidate_id?.phone%>">
                 </div>
                 <div class="job-type">
                     <h6>Email:</h6>
-                    <span><%- simulation.candidate_id.email %></span>
+                    <span><%- simulation.candidate_id?.email %></span>
                 </div>
                 <div class="job-type">
                     <h6>Phone:</h6>
-                    <span id="maskNumber"><%- maskNumber(simulation.candidate_id.phone) %></span>
+                    <span id="maskNumber"><%- maskNumber(simulation.candidate_id?.phone) %></span>
                     <span style="margin-left: 15px">
                         <butto onclick="handleButtonClick('view_contact')" id="maskNumberBtn"
                             class="mr-2 btn btn-info btn-xs btn-squared btn-block ">View
@@ -154,19 +154,19 @@
                 </div>
                 <div class="job-type">
                     <h6>Job Title:</h6>
-                    <span><%- simulation.candidate_id.job_title %></span>
+                    <span><%- simulation.candidate_id?.job_title %></span>
                 </div>
                 <div class="job-type">
                     <h6>Current Location:</h6>
-                    <span><%- simulation.candidate_id.current_location %></span>
+                    <span><%- simulation.candidate_id?.current_location %></span>
                 </div>
                 <div class="job-type">
                     <h6>Expected Salary:</h6>
-                    <span>&#8377;<%- simulation.candidate_id.monthly_expected_salary %></span>
+                    <span>&#8377;<%- simulation.candidate_id?.monthly_expected_salary %></span>
                 </div>
                 <div class="job-type">
                     <h6>Resume:</h6>
-                    <span><a download href="/resumes/<%- simulation.candidate_id.resume %>"><button
+                    <span><a download href="/resumes/<%- simulation.candidate_id?.resume %>"><button
                                 onclick="handleButtonClick('resume_download')" id="maskNumberBtn"
                                 class="mr-2 btn btn-info btn-xs btn-squared btn-block ">Download</button></a></span>
                 </div>

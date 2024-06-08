@@ -88,7 +88,7 @@ app.get('/resumes/:fileName', (req, res) => {
    res.sendFile(filePath);
 });
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://' + DB_HOST + ':' + DB_PORT + '/' + DB_NAME + '').
+mongoose.connect('mongodb://' + DB_HOST + ':' + DB_PORT + '/' + DB_NAME + '', { useNewUrlParser: true, useUnifiedTopology: true }).
    then(() => console.log("Mongodb connected successfully !")).
    catch(error => console.log(error))
 

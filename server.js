@@ -58,6 +58,7 @@ app.use(session({
 }))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' }));
 
 app.use(globalSession.globalSession)
 app.use(globalSession.errorMessage)
@@ -71,6 +72,7 @@ app.use(flash());
 app.set('layout', './layout/app')
 app.set('view engine', 'ejs')
 app.use(localeMiddleware.currentRoute)
+
 
 // registering all the routes
 app.use(BASE_URL + 'admin', admin_routes)
